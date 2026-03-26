@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120">
+  <defs>
+    <style>
+      .safri-text { font-family: Arial, sans-serif; font-weight: bold; }
+      .safri-s { font-size: 80px; fill: #D32F2F; }
+      .safri-rest { font-size: 60px; fill: #D32F2F; }
+      .safri-label { font-size: 18px; fill: white; font-weight: bold; }
+    </style>
+  </defs>
+  
+  <!-- Red S and text -->
+  <text x="10" y="85" class="safri-text safri-s">S</text>
+  <text x="75" y="85" class="safri-text safri-rest">AFRI</text>
+  
+  <!-- Blue band with white text at bottom -->
+  <rect x="0" y="95" width="320" height="25" fill="#0047AB" rx="3"/>
+  <text x="15" y="115" class="safri-text safri-label">Comercial, Lda.</text>
+</svg>

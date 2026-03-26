@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <style>
+      .favicon-text { font-family: Arial, sans-serif; font-weight: bold; }
+      .favicon-s { font-size: 72px; fill: #D32F2F; }
+    </style>
+  </defs>
+  
+  <!-- Light background -->
+  <rect width="128" height="128" fill="#ffffff" rx="16"/>
+  
+  <!-- Blue band at bottom -->
+  <rect x="0" y="85" width="128" height="43" fill="#0047AB" rx="16"/>
+  
+  <!-- Red S -->
+  <text x="18" y="75" class="favicon-text favicon-s">S</text>
+  
+  <!-- White text on blue band -->
+  <text x="12" y="115" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white">SAFRI</text>
+</svg>
