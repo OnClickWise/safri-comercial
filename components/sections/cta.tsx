@@ -14,45 +14,61 @@ export function Cta() {
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`
 
   return (
-    <section className="relative py-20 md:py-28 bg-primary text-white overflow-hidden">
+    <section className="relative py-24 md:py-32 bg-primary text-white overflow-hidden">
 
-      <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top,white,transparent_70%)]" />
+      {/* BACKGROUND PREMIUM */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.25),transparent_70%)] opacity-30" />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary via-primary to-primary/90" />
 
-      <div className="container relative mx-auto px-4 sm:px-6">
+      <div className="container relative mx-auto px-6 lg:px-12">
 
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="max-w-3xl mx-auto text-center"
+          className="max-w-4xl mx-auto text-center"
         >
 
-          <span className="text-xs uppercase tracking-widest text-white/70">
-            Parcerias Estratégicas
+          {/* TAG */}
+          <span className="text-xs sm:text-sm uppercase tracking-[0.2em] text-white/60">
+            Parceria Estratégica & Execução Real
           </span>
 
-          <h2 className="mt-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-            Pronto para Trabalhar com um
-            <span className="block">Parceiro de Confiança?</span>
+          {/* HEADLINE FORTE */}
+          <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1]">
+            Transforme o seu projeto em
+            <span className="block text-white/80">
+              resultados concretos e escaláveis
+            </span>
           </h2>
 
-          <p className="mt-6 text-white/80 text-sm sm:text-base md:text-lg leading-relaxed">
-            A SAFRI está preparada para apoiar o seu projecto com soluções integradas 
-            em comércio, logística, indústria, construção e investimento estratégico, 
-            garantindo eficiência, capacidade de execução e resultados concretos.
+          {/* SUBTEXTO MAIS DIRETO */}
+          <p className="mt-6 text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
+            A SAFRI oferece estrutura, capacidade operacional e experiência comprovada
+            para executar projetos com eficiência, escala e segurança — do planeamento à entrega.
           </p>
 
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          {/* PROVA / REFORÇO */}
+          <p className="mt-4 text-sm text-white/60">
+            Comércio • Logística • Indústria • Construção • Importação • Agro
+          </p>
 
-            <Button
-              size="lg"
-              className="px-8 py-6 text-base font-semibold"
-            >
-              Solicitar Proposta
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+          {/* CTAs */}
+          <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
 
+            {/* CTA PRINCIPAL */}
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+              <Button
+                size="lg"
+                className="px-10 py-7 text-base sm:text-lg font-semibold bg-white text-primary hover:bg-white/90 shadow-xl"
+              >
+                Solicitar Proposta
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </a>
+
+            {/* CTA SECUNDÁRIO */}
             <a
               href={whatsappLink}
               target="_blank"
@@ -61,7 +77,7 @@ export function Cta() {
               <Button
                 variant="outline"
                 size="lg"
-                className="px-8 py-6 text-base border-white text-white hover:bg-white hover:text-primary flex items-center gap-2"
+                className="px-10 py-7 text-base sm:text-lg border-white/40 text-white hover:bg-white/10 flex items-center gap-2"
               >
                 <MessageCircle size={20} />
                 Falar com Especialista
@@ -70,13 +86,33 @@ export function Cta() {
 
           </div>
 
-          <p className="mt-8 text-xs sm:text-sm text-white/60">
-            +25 anos de experiência • Presença multissetorial • Cobertura nacional
-          </p>
+          {/* SOCIAL PROOF */}
+          <div className="mt-12 grid grid-cols-3 gap-6 max-w-xl mx-auto text-center">
+
+            <Stat value="+25" label="Anos de Experiência" />
+            <Stat value="+100" label="Projetos Executados" />
+            <Stat value="Nacional" label="Cobertura Operacional" />
+
+          </div>
 
         </motion.div>
 
       </div>
     </section>
+  )
+}
+
+/* STATS */
+
+function Stat({ value, label }: any) {
+  return (
+    <div>
+      <div className="text-2xl sm:text-3xl font-bold">
+        {value}
+      </div>
+      <div className="text-xs sm:text-sm text-white/60 mt-1">
+        {label}
+      </div>
+    </div>
   )
 }

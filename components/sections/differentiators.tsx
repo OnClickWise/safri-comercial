@@ -2,6 +2,9 @@
 
 import Image from "next/image"
 import { motion } from "framer-motion"
+import useEmblaCarousel from "embla-carousel-react"
+import React from "react"
+
 import {
   Layers,
   Workflow,
@@ -26,16 +29,38 @@ const items = [
     icon: Handshake,
   },
   {
-    title: "Parcerias Estratégicas e Governamentais",
-    desc: "Relações sólidas com entidades públicas e privadas, nacionais e internacionais, fortalecendo a capacidade de entrega e expansão.",
+    title: "Parcerias Estratégicas",
+    desc: "Relações sólidas com entidades públicas e privadas, fortalecendo a capacidade de entrega e expansão.",
     icon: Leaf,
   },
 ]
 
+const images = [
+  "/images/galeria/infra-strutura4.jpg",
+  "/images/galeria/infra-strutura1.jpg",
+  "/images/galeria/infra-strutura2.jpg",
+  "/images/galeria/infra-strutura3.jpg",
+  "/images/galeria/infra-strutura5.jpg",
+  "/images/galeria/infra-strutura6.jpg",
+]
+
 export function Differentiators() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
+
+  React.useEffect(() => {
+    if (!emblaApi) return
+
+    const autoplay = setInterval(() => {
+      emblaApi.scrollNext()
+    }, 4000)
+
+    return () => clearInterval(autoplay)
+  }, [emblaApi])
+
   return (
     <section className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto px-4 sm:px-6">
+
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
 
         {/* HEADER */}
         <div className="text-center max-w-2xl mx-auto">
@@ -43,33 +68,20 @@ export function Differentiators() {
             Diferenciais SAFRI
           </span>
 
-          <h2 className="mt-5 text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
+          <h2 className="mt-5 text-2xl sm:text-3xl md:text-4xl font-bold">
             Porquê Escolher a SAFRI
           </h2>
 
-          <p className="mt-4 text-muted-foreground text-sm sm:text-base leading-relaxed">
-            Uma estrutura sólida, experiência comprovada e capacidade operacional
-            que garantem execução eficiente, segurança contratual e resultados consistentes.
+          <p className="mt-4 text-muted-foreground text-sm sm:text-base">
+            Estrutura sólida, experiência comprovada e capacidade operacional
+            que garantem execução eficiente e resultados consistentes.
           </p>
         </div>
 
-        {/* CONTENT GRID */}
-        <div className="mt-14 grid gap-10 lg:grid-cols-2 items-center">
+        {/* GRID */}
+        <div className="mt-14 grid gap-12 lg:grid-cols-2 items-center">
 
-           {/* RIGHT  - IMAGE */}
-          <div className="relative w-full h-[320px] sm:h-[420px] lg:h-[500px]">
-            <Image
-              src="/images/safri.jpg" // 👉 troca pela tua imagem real
-              alt="Infraestrutura e operações da SAFRI"
-              fill
-              className="object-cover rounded-2xl shadow-xl"
-              priority
-            />
-
-            {/* overlay elegante */}
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-          </div>
-          {/*  - CARDS */}
+          {/* LEFT - CARDS */}
           <div className="grid gap-5 sm:grid-cols-2">
             {items.map((item, index) => {
               const Icon = item.icon
@@ -84,11 +96,10 @@ export function Differentiators() {
                     delay: index * 0.08,
                   }}
                   viewport={{ once: true }}
-                  className="group rounded-2xl border border-border bg-card p-6 sm:p-7
+                  className="group rounded-2xl border bg-card p-6 sm:p-7
                              hover:shadow-xl hover:-translate-y-1
                              transition-all duration-300"
                 >
-
                   <div className="flex items-start gap-4">
 
                     <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-primary text-white
@@ -97,7 +108,7 @@ export function Differentiators() {
                     </div>
 
                     <div>
-                      <h3 className="text-base sm:text-lg font-semibold text-foreground">
+                      <h3 className="text-base sm:text-lg font-semibold">
                         {item.title}
                       </h3>
 
@@ -107,10 +118,50 @@ export function Differentiators() {
                     </div>
 
                   </div>
-
                 </motion.div>
               )
             })}
+          </div>
+
+          {/* RIGHT - CAROUSEL */}
+          <div className="relative">
+
+            <div
+              ref={emblaRef}
+              className="overflow-hidden rounded-2xl shadow-xl"
+            >
+              <div className="flex">
+                {images.map((src, index) => (
+                  <div
+                    key={index}
+                    className="min-w-full h-[320px] sm:h-[420px] lg:h-[500px] relative"
+                  >
+                    <Image
+                      src={src}
+                      alt="Operações SAFRI"
+                      fill
+                      className="object-cover"
+                      priority={index === 0}
+                    />
+
+                    {/* overlay elegante */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* INDICADORES (clean) */}
+            <div className="flex justify-center mt-4 gap-2">
+              {images.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => emblaApi?.scrollTo(index)}
+                  className="w-2 h-2 rounded-full bg-muted hover:bg-primary transition"
+                />
+              ))}
+            </div>
+
           </div>
 
         </div>

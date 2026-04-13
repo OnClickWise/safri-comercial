@@ -13,6 +13,11 @@ import {
 import Link from "next/link"
 
 export default function ContactoPage() {
+
+  const phone = "+244248200287"
+  const whatsapp = "244923315321"
+  const email = "safri@safri.co.ao"
+
   return (
     <main>
 
@@ -20,8 +25,8 @@ export default function ContactoPage() {
 
       <PageHero
         title="Entre em Contacto"
-        description="Fale com a equipa da LUFUAYELE para solicitar propostas, informações comerciais ou parcerias."
-        image="/images/banner-contacto.png"
+        description="Fale com a equipa da SAFRI para solicitar propostas, informações comerciais ou estabelecer parcerias estratégicas."
+        image="/images/safri-metal.png"
       />
 
       {/* CONTACTO */}
@@ -41,9 +46,9 @@ export default function ContactoPage() {
                 </h2>
 
                 <p className="mt-4 text-muted-foreground">
-                  Estamos disponíveis para responder às suas questões,
-                  apresentar soluções e desenvolver propostas adequadas
-                  às necessidades do seu projeto ou instituição.
+                  A nossa equipa está disponível para compreender as necessidades
+                  do seu projecto e apresentar soluções eficientes, com capacidade
+                  real de execução em larga escala.
                 </p>
               </div>
 
@@ -54,111 +59,90 @@ export default function ContactoPage() {
                 {/* TELEFONE */}
 
                 <div className="flex gap-4 items-start">
-
                   <div className="p-3 rounded-lg bg-primary/10 text-primary">
                     <Phone size={20} />
                   </div>
 
                   <div>
-                    <p className="font-semibold text-foreground">
-                      Telefone
-                    </p>
+                    <p className="font-semibold text-foreground">Telefone</p>
 
                     <Link
-                      href="tel:+244923019166"
+                      href={`tel:${phone}`}
                       className="text-muted-foreground hover:text-primary transition"
                     >
-                      +244 923 019 166
+                      +244 248 200 287
                     </Link>
-
                   </div>
-
                 </div>
 
                 {/* WHATSAPP */}
 
                 <div className="flex gap-4 items-start">
-
                   <div className="p-3 rounded-lg bg-green-500/10 text-green-500">
                     <MessageCircle size={20} />
                   </div>
 
                   <div>
-                    <p className="font-semibold text-foreground">
-                      WhatsApp
-                    </p>
+                    <p className="font-semibold text-foreground">WhatsApp</p>
 
                     <Link
-                      href="https://wa.me/244923019166"
+                      href={`https://wa.me/${whatsapp}`}
                       target="_blank"
                       className="text-primary hover:underline"
                     >
                       Conversar no WhatsApp
                     </Link>
-
                   </div>
-
                 </div>
 
                 {/* EMAIL */}
 
                 <div className="flex gap-4 items-start">
-
                   <div className="p-3 rounded-lg bg-primary/10 text-primary">
                     <Mail size={20} />
                   </div>
 
                   <div>
-                    <p className="font-semibold text-foreground">
-                      Email
-                    </p>
+                    <p className="font-semibold text-foreground">Email</p>
 
                     <Link
-                      href="mailto:contacto@lufuayele.com"
+                      href={`mailto:${email}`}
                       className="text-muted-foreground hover:text-primary transition"
                     >
-                      contacto@lufuayele.com
+                      safri@safri.co.ao
                     </Link>
-
                   </div>
-
                 </div>
 
                 {/* ENDEREÇO */}
 
                 <div className="flex gap-4 items-start">
-
                   <div className="p-3 rounded-lg bg-primary/10 text-primary">
                     <MapPin size={20} />
                   </div>
 
                   <div>
-                    <p className="font-semibold text-foreground">
-                      Endereço
-                    </p>
+                    <p className="font-semibold text-foreground">Endereço</p>
 
                     <Link
-                      href="https://www.google.com/maps/search/Rua+Norton+de+Matos+Cuito+Bie+Angola"
+                      href="https://www.google.com/maps/place/SAFRI+COMERCIAL,+LDA/@-12.4262728,16.9272131"
                       target="_blank"
                       className="text-muted-foreground hover:text-primary transition"
                     >
-                      Rua Norton de Matos <br />
-                      Município do Cuito <br />
-                      Província do Bié — Angola
+                      Estrada Nacional N.250, Chissindo <br />
+                      Cuito (Kuito) – Bié, Angola
                     </Link>
-
                   </div>
-
                 </div>
 
               </div>
 
-              {/* MAPA */}
+              {/* MAPA REAL (GOOGLE) */}
 
-              <div className="rounded-2xl overflow-hidden border border-border h-[260px]">
+              <div className="rounded-2xl overflow-hidden border border-border h-[300px]">
 
                 <iframe
-                  src="https://maps.google.com/maps?q=Rua%20Norton%20de%20Matos%20Cuito%20Bie%20Angola&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  src="https://maps.google.com/maps?q=-12.4262728,16.9272131&z=15&output=embed"
                   className="w-full h-full"
                   loading="lazy"
                 />
@@ -172,48 +156,39 @@ export default function ContactoPage() {
             <div className="bg-card border border-border rounded-2xl p-8 shadow-sm">
 
               <h3 className="text-2xl font-semibold text-foreground">
-                Enviar Mensagem
+                Solicitar Contacto
               </h3>
 
               <p className="mt-2 text-muted-foreground">
-                Preencha o formulário e a nossa equipa entrará em contacto.
+                Preencha o formulário e entraremos em contacto rapidamente.
               </p>
 
               <form className="mt-8 space-y-6">
 
                 <Input placeholder="Nome completo" />
 
-                <Input
-                  type="email"
-                  placeholder="Email"
-                />
+                <Input type="email" placeholder="Email" />
 
-                <Input
-                  placeholder="Telefone"
-                />
+                <Input placeholder="Telefone" />
 
                 <Textarea
-                  placeholder="Escreva a sua mensagem"
+                  placeholder="Descreva o seu projecto ou necessidade"
                   rows={5}
                 />
 
-                <Button
-                  size="lg"
-                  className="w-full"
-                >
+                <Button size="lg" className="w-full">
                   Enviar Mensagem
                 </Button>
 
               </form>
 
-              {/* ALTERNATIVA WHATSAPP */}
+              {/* WHATSAPP CTA */}
 
               <Link
-                href="https://wa.me/244923019166"
+                href={`https://wa.me/${whatsapp}`}
                 target="_blank"
                 className="block"
               >
-
                 <Button
                   variant="outline"
                   size="lg"
@@ -221,7 +196,6 @@ export default function ContactoPage() {
                 >
                   Falar pelo WhatsApp
                 </Button>
-
               </Link>
 
             </div>
