@@ -1,10 +1,14 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { CheckCircle2 } from "lucide-react"
 
 export function AboutPreview() {
+
+  const whatsapp = "244922100548"
+
   const features = [
     "Execução comprovada em operações de grande escala",
     "Integração total entre logística, indústria e comércio",
@@ -13,15 +17,18 @@ export function AboutPreview() {
     "Cobertura nacional com potencial de expansão contínua",
   ]
 
+  const message = encodeURIComponent(
+    "Olá, gostaria de falar com um especialista da SAFRI."
+  )
+
   return (
     <section className="w-full min-h-screen flex items-center py-16 lg:py-24">
 
-      {/* CONTAINER CONTROLADO (mais elegante) */}
       <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-          {/* LEFT - CONTENT */}
+          {/* LEFT */}
           <div className="max-w-xl">
 
             {/* TAG */}
@@ -29,12 +36,12 @@ export function AboutPreview() {
               SOBRE A SAFRI
             </div>
 
-            {/* HEADLINE */}
+            {/* TITLE */}
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.08] tracking-tight">
               Capacidade real para executar projetos de grande escala
             </h2>
 
-            {/* SUBTEXT */}
+            {/* TEXT */}
             <p className="mt-6 text-lg sm:text-xl text-muted-foreground">
               A SAFRI posiciona-se como parceiro estratégico para empresas que exigem
               eficiência operacional, escala e entrega garantida.
@@ -45,13 +52,10 @@ export function AboutPreview() {
               performance e resultados consistentes.
             </p>
 
-            {/* BENEFITS */}
+            {/* LIST */}
             <ul className="mt-8 space-y-4">
               {features.map((item, index) => (
-                <li
-                  key={index}
-                  className="flex items-start gap-3 text-base"
-                >
+                <li key={index} className="flex items-start gap-3 text-base">
                   <CheckCircle2 className="w-5 h-5 text-primary mt-1" />
                   <span>{item}</span>
                 </li>
@@ -67,21 +71,34 @@ export function AboutPreview() {
 
             {/* CTA */}
             <div className="mt-12 flex flex-col sm:flex-row gap-4">
-              <Button className="px-10 py-6 text-lg font-semibold">
-                Conhecer a Empresa
-              </Button>
 
-              <Button
-                variant="outline"
-                className="px-10 py-6 text-lg"
+              {/* EMPRESA */}
+              <Link href="/empresa">
+                <Button className="px-10 py-6 text-lg font-semibold w-full sm:w-auto">
+                  Conhecer a Empresa
+                </Button>
+              </Link>
+
+              {/* WHATSAPP */}
+              <a
+                href={`https://wa.me/${whatsapp}?text=${message}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto"
               >
-                Falar com Especialista
-              </Button>
+                <Button
+                  variant="outline"
+                  className="px-10 py-6 text-lg w-full"
+                >
+                  Falar com Especialista
+                </Button>
+              </a>
+
             </div>
 
           </div>
 
-          {/* RIGHT - IMAGE (REFINADO) */}
+          {/* RIGHT */}
           <div className="relative">
 
             <div className="relative w-full h-[340px] sm:h-[420px] lg:h-[520px] rounded-2xl overflow-hidden shadow-xl">
@@ -94,12 +111,11 @@ export function AboutPreview() {
                 className="object-cover"
               />
 
-              {/* OVERLAY SUAVE */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
 
             </div>
 
-            {/* BADGE FLOAT (mais elegante) */}
+            {/* BADGE */}
             <div className="absolute -bottom-6 left-6 bg-background border border-border px-4 py-3 rounded-xl shadow-md">
               <span className="text-sm font-semibold">
                 +25 anos de experiência comprovada

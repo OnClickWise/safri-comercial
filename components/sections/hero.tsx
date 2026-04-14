@@ -32,11 +32,11 @@ const slides = [
 export function Hero() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
 
-  const whatsappNumber = "244923019166";
-
-  const proposalLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    "Olá, gostaria de solicitar uma proposta da SAFRI.",
-  )}`;
+      const whatsappNumber = "244922100548";
+      const proposalLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      "Olá, gostaria de solicitar uma proposta da SAFRI.",
+    )}`;
+ 
 
   React.useEffect(() => {
     if (!emblaApi) return;

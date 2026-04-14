@@ -3,7 +3,7 @@
 import { MessageCircle } from "lucide-react"
 
 export function WhatsAppButton() {
-  const phone = "244923019166"
+  const phone = "244922100548" 
 
   const message =
     "Olá, gostaria de mais informações sobre os serviços da SAFRI Comercial, Lda."

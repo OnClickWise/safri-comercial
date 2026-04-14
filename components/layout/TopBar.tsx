@@ -46,16 +46,16 @@ export default function TopBar() {
 
             {/* Telefone */}
             <a
-              href="tel:+244248200287"
+              href="tel:+244936324116"
               className="flex items-center gap-2 font-medium text-foreground hover:text-primary transition-colors"
             >
               <Phone size={15} />
-              <span>+244 248 200 287</span>
+              <span>+244 936 324 116</span>
             </a>
 
             {/* WhatsApp */}
             <a
-              href="https://wa.me/244248200287"
+              href="https://wa.me/244922100548"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"

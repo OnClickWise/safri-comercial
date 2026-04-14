@@ -14,8 +14,8 @@ import Link from "next/link"
 
 export default function ContactoPage() {
 
-  const phone = "+244248200287"
-  const whatsapp = "244923315321"
+  const phone = "+244936324116"        // tel aceita +
+  const whatsapp = "244922100548"      // wa.me NÃO aceita +
   const email = "safri@safri.co.ao"
 
   return (

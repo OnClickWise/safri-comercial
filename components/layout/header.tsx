@@ -39,11 +39,6 @@ const sectors = [
     image: "/images/services/industria.jpg",
   },
   {
-    title: "Construção & Obras Públicas",
-    desc: "Infraestruturas e projetos governamentais",
-    image: "/images/services/construcao1.jpg",
-  },
-  {
     title: "Hotelaria & Turismo",
     desc: "Centro turístico e investimentos em lazer",
     image: "/images/services/turismo.jpg",
@@ -152,6 +147,8 @@ export function Header() {
                 <NavLink href="/galeria">Galeria</NavLink>
               </NavigationMenuItem>
 
+              
+
               <NavigationMenuItem>
                 <NavLink href="/contacto">Contacto</NavLink>
               </NavigationMenuItem>
@@ -189,6 +186,7 @@ export function Header() {
           <MobileLink href="/empresa">Empresa</MobileLink>
           <MobileLink href="/setores">Áreas</MobileLink>
           <MobileLink href="/galeria">Galeria</MobileLink>
+
           <MobileLink href="/contacto">Contacto</MobileLink>
         </div>
       )}

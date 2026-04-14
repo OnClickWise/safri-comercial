@@ -55,7 +55,7 @@ const services = [
       "Discoteca e espaços recreativos",
       "Projeto turístico único na região do Bié",
     ],
-    image: "/images/services/hotelaria.jpg",
+    image: "/images/services/turismo.jpg",
   },
   {
     title: "Importação & Comércio Internacional",
@@ -69,19 +69,6 @@ const services = [
       "Capacidade de entrega em menos de 10 dias",
     ],
     image: "/images/services/importacao.jpg",
-  },
-  {
-    title: "Construção Civil & Obras Públicas",
-    description:
-      "Execução de projetos estruturais com capacidade técnica e meios próprios.",
-    items: [
-      "Construção de habitações sociais (programas do Governo)",
-      "Reconstrução de infraestruturas públicas",
-      "Perfuração de furos de água (sistemas AFRIDEV)",
-      "Projetos de energia solar e iluminação pública",
-      "Gabinete técnico de estudos e projetos",
-    ],
-    image: "/images/services/construcao1.jpg",
   },
   {
     title: "Projetos Educacionais",

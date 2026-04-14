@@ -41,9 +41,9 @@ export default function EmpresaPage() {
               </div>
 
              {/* CEO */}
-            <div className="relative w-full h-[380px] sm:h-[460px] lg:h-[520px] rounded-3xl overflow-hidden shadow-xl">
+            <div className="relative w-full h-[480px] sm:h-[460px] lg:h-[520px] rounded-3xl overflow-hidden shadow-xl">
               <Image
-                src="/images/safri-ceo.jpg"
+                src="/images/safri-ceo.png"
                 alt="CEO SAFRI"
                 fill
                 className="object-cover object-center"

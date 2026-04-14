@@ -6,7 +6,7 @@ import { ArrowRight, MessageCircle } from "lucide-react"
 
 export function Cta() {
 
-  const whatsappNumber = "244923019166"
+  const whatsappNumber = "244922100548"
 
   const whatsappMessage =
     "Olá, gostaria de solicitar uma proposta da SAFRI."
