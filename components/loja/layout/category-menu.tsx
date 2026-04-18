@@ -1,100 +1,279 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import { useFilter } from "@/store/filter-store"
-import { useRouter } from "next/navigation"
+import * as React from "react";
+import Image from "next/image";
+import useEmblaCarousel from "embla-carousel-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useFilter } from "@/store/filter-store";
+import { useRouter } from "next/navigation";
 
 const categories = [
-  { name: "Todos", value: "", image: "/categories/all.jpg" },
-  { name: "Sacos Industriais", value: "sacos", image: "/images/categories/sacos.jpg" },
-  { name: "Carteiras Escolares", value: "carteiras", image: "/categories/carteiras.jpg" },
-  { name: "Construção", value: "construcao", image: "/categories/construcao.jpg" },
-  { name: "Ferro & Metal", value: "metal", image: "/categories/metal.jpg" },
-  { name: "Equipamentos", value: "equipamentos", image: "/categories/equipamentos.jpg" },
-  { name: "Logística", value: "logistica", image: "/categories/logistica.jpg" },
-  { name: "Agro", value: "agro", image: "/categories/agro.jpg" },
-]
+  { name: "Todos", value: "", image: "/images/categories/categoria1.png" },
+
+  {
+    name: "Sacos Industriais",
+    value: "sacos",
+    image: "/images/categories/categoria1.png",
+  },
+
+  {
+    name: "Carteiras Escolares",
+    value: "carteiras",
+    image: "/images/categories/categoria9.png",
+  },
+
+  {
+    name: "Mais Escolar",
+    value: "mais-escolar",
+    image: "/images/categories/categoria18.png",
+  },
+
+  {
+    name: "Quadros Escolares",
+    value: "quadros",
+    image: "/images/categories/categoria4.png",
+  },
+
+
+  {
+    name: "Estoque",
+    value: "estoque",
+    image: "/images/categories/categoria6.png",
+  },
+
+  {
+    name: "Quadro Negro",
+    value: "quadros-negro",
+    image: "/images/categories/categoria8.png",
+  },
+
+  {
+    name: "Logística",
+    value: "logistica",
+    image: "/images/categories/categoria5.png",
+  },
+
+  { name: "Agro", 
+    value: "agro", 
+    image: "/images/categories/categoria1.png" },
+
+  {
+    name: "Mais em vendas",
+    value: "mais-vendidos",
+    image: "/images/categories/categoria17.png",
+  },
+
+  {
+    name: "Produção",
+    value: "producao",
+    image: "/images/categories/categoria12.png",
+  },
+
+  { name: "EPIs", value: "epis", image: "/images/categories/categoria13.png" },
+
+  {
+    name: "Mobiliário",
+    value: "mobiliario",
+    image: "/images/categories/categoria14.png",
+  },
+
+  {
+    name: "Armazém",
+    value: "armazem",
+    image: "/images/categories/categoria6.png",
+  },
+
+  {
+    name: "Embalagens",
+    value: "embalagens",
+    image: "/images/categories/categoria12.png",
+  },
+
+  {
+    name: "Estocagem",
+    value: "estocagem",
+    image: "/images/categories/categoria9.png",
+  },
+
+  {
+    name: "Equipa",
+    value: "equipa",
+    image: "/images/categories/categoria13.png",
+  },
+
+  {
+    name: "Institucional",
+    value: "institucional",
+    image: "/images/categories/categoria15.png",
+  },
+
+  {
+    name: "Sacos Personalizados",
+    value: "Sacos",
+    image: "/images/categories/categoria4.png",
+  },
+];
 
 export default function CategoryMenu() {
-  const { category, setCategory } = useFilter()
-  const router = useRouter()
+  const { category, setCategory } = useFilter();
+
+  const router = useRouter();
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: "start",
+  });
+
+  const scrollPrev = () => emblaApi?.scrollPrev();
+  const scrollNext = () => emblaApi?.scrollNext();
+
+  React.useEffect(() => {
+    if (!emblaApi) return;
+
+    const autoplay = setInterval(() => {
+      emblaApi.scrollNext();
+    }, 3500);
+
+    return () => clearInterval(autoplay);
+  }, [emblaApi]);
 
   const handleClick = (value: string) => {
-    setCategory(value)
-    router.push(`/loja${value ? `?categoria=${value}` : ""}`)
-  }
+    setCategory(value);
+    router.push(`/loja${value ? `?categoria=${value}` : ""}`);
+  };
 
   return (
-    <div className="bg-background border-b border-border">
-      <div className="container mx-auto py-6">
+    <section
+      className="
+bg-background
+border-b
+border-border
+py-8
+"
+    >
+      <div className="container mx-auto">
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <h3 className="text-xl md:text-2xl font-bold">
+              Explore Categorias
+            </h3>
 
-        <div className="
-          grid
-          grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8
-          gap-5
-        ">
+            <p className="text-sm text-muted-foreground">
+              Produtos organizados por segmentos e linhas de fornecimento
+            </p>
+          </div>
 
-          {categories.map((cat, index) => {
-            const active = category === cat.value
+          <div className="flex gap-3">
+            <button
+              onClick={scrollPrev}
+              className="
+p-3
+rounded-full
+border
+hover:shadow-md
+"
+            >
+              <ChevronLeft size={18} />
+            </button>
 
-            return (
-              <button
-                key={index}
-                onClick={() => handleClick(cat.value)}
-                className="flex flex-col items-center group"
-              >
-
-                {/* IMAGE */}
-                <div
-                  className={`
-                    relative
-                    w-[65px] h-[65px]
-                    md:w-[75px] md:h-[75px]
-                    rounded-full
-                    overflow-hidden
-                    border
-                    transition-all duration-300
-                    ${active 
-                      ? "border-primary shadow-lg scale-105 ring-2 ring-primary/30" 
-                      : "border-border group-hover:shadow-md group-hover:scale-105"}
-                  `}
-                >
-                  <Image
-                    src={cat.image || "/categories/fallback.jpg"}
-                    alt={cat.name}
-                    fill
-                    sizes="80px"
-                    className="object-cover"
-                    onError={(e: any) => {
-                      e.currentTarget.src = "/categories/fallback.jpg"
-                    }}
-                  />
-
-                  {/* OVERLAY ACTIVE */}
-                  {active && (
-                    <div className="absolute inset-0 bg-primary/10" />
-                  )}
-                </div>
-
-                {/* LABEL */}
-                <span
-                  className={`
-                    mt-2 text-[11px] md:text-xs font-medium text-center leading-tight transition
-                    ${active 
-                      ? "text-primary font-semibold" 
-                      : "text-muted-foreground group-hover:text-foreground"}
-                  `}
-                >
-                  {cat.name}
-                </span>
-
-              </button>
-            )
-          })}
-
+            <button
+              onClick={scrollNext}
+              className="
+p-3
+rounded-full
+border
+hover:shadow-md
+"
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
         </div>
 
+        <div ref={emblaRef} className="overflow-hidden">
+          <div className="flex">
+            {categories.map((cat, index) => {
+              const active = category === cat.value;
+
+              return (
+                <div
+                  key={index}
+                  className="
+min-w-[130px]
+md:min-w-[150px]
+mr-5
+"
+                >
+                  <button
+                    onClick={() => handleClick(cat.value)}
+                    className="
+w-full
+flex
+flex-col
+items-center
+group
+"
+                  >
+                    <div
+                      className={`
+relative
+w-[90px]
+h-[90px]
+md:w-[110px]
+md:h-[110px]
+rounded-full
+overflow-hidden
+border
+transition-all
+duration-300
+
+${
+  active
+    ? "border-primary scale-105 ring-4 ring-primary/20 shadow-lg"
+    : "border-border group-hover:scale-105 group-hover:shadow-md"
+}
+`}
+                    >
+                      <Image
+                        src={cat.image}
+                        alt={cat.name}
+                        fill
+                        sizes="120px"
+                        className="object-cover"
+                      />
+
+                      {active && (
+                        <div
+                          className="
+absolute
+inset-0
+bg-primary/10
+"
+                        />
+                      )}
+                    </div>
+
+                    <span
+                      className={`
+mt-3
+text-xs
+md:text-sm
+font-medium
+text-center
+leading-tight
+
+${active ? "text-primary" : "text-muted-foreground group-hover:text-foreground"}
+`}
+                    >
+                      {cat.name}
+                    </span>
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
-    </div>
-  )
+    </section>
+  );
 }

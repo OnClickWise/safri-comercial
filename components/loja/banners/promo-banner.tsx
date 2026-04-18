@@ -9,14 +9,16 @@ import React from "react"
 const products = [
   { name: "Cimento", image: "/products/cimento.png" },
   { name: "Ferro & Metal", image: "/products/metal.png" },
-  { name: "Equipamentos Industriais", image: "/products/equipamentos.png" },
-  { name: "Transporte & Logística", image: "/products/logistica.png" },
-  { name: "Materiais de Construção", image: "/products/construcao.png" },
-  { name: "Agro-Pecuária", image: "/products/agro.png" },
-  { name: "Importação", image: "/products/importacao.png" },
-  { name: "Distribuição", image: "/products/distribuicao.png" },
-  { name: "Armazéns", image: "/products/armazem.png" },
-  { name: "Infraestrutura", image: "/products/infraestrutura.png" },
+  { name: "Equipamentos Industriais", image: "images/categories/categoria1.png" },
+  { name: "Transporte & Logística", image: "images/categories/categoria2.png" },
+  { name: "Materiais de Construção", image: "images/categories/categoria3.png" },
+  { name: "Agro-Pecuária", image: "images/categories/categoria4.png" },
+  { name: "Importação", image: "images/categories/categoria5.png" },
+  { name: "Distribuição", image: "images/categories/categoria6.png" },
+  { name: "Armazéns", image: "images/categories/categoria7.png" },
+   { name: "Importação", image: "images/categories/categoria8.png" },
+  { name: "Distribuição", image: "images/categories/categoria9.png" },
+  { name: "Armazéns", image: "images/categories/categoria10.png" },
 ]
 
 export default function ProductsCarousel() {

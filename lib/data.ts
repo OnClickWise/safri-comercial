@@ -53,7 +53,7 @@ export const services = [
     icon: "commerce",
   },
   {
-    title: "Transportes",
+    title: "Logística ",
     description:
       "Frota própria com caminhões plataforma (30t), basculantes, porta-máquinas e autocarros.",
     icon: "transport",

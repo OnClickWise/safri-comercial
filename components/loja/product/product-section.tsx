@@ -1,34 +1,63 @@
-"use client"
+"use client";
 
-import { useRouter } from "next/navigation"
-import ProductCarousel from "./product-carousel"
+import { useRouter } from "next/navigation";
+import ProductCarousel from "./product-carousel";
 
 export default function ProductSection({ title, category }: any) {
-  const router = useRouter()
+  const router = useRouter();
 
   return (
-    <section className="py-8 md:py-10">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
+    <section className="py-10">
+      <div
+        className="
+          max-w-7xl
+          mx-auto
+          px-4
+          md:px-6
+          "
+      >
+        <div
+          className="
+          flex
+          items-center
+          justify-between
+          mb-6
+          "
+        >
+          <div>
+            <h2
+              className="
+              text-xl
+              md:text-2xl
+              font-bold
+              "
+            >
+              {title}
+            </h2>
 
-        {/* HEADER */}
-        <div className="flex items-center justify-between mb-6">
-
-          <h2 className="text-lg md:text-xl font-semibold tracking-tight">
-            {title}
-          </h2>
+            <p
+              className="
+              text-sm
+              text-muted-foreground
+              "
+            >
+              Produtos em destaque
+            </p>
+          </div>
 
           <button
-            onClick={() => router.push(`/loja/categoria/${category}`)}
-            className="text-sm text-muted-foreground hover:text-primary transition"
-          >
-            Ver todos
+            onClick={() => router.push(`/loja?categoria=${category}`)}
+            className="
+            text-sm
+            font-medium
+            text-primary
+            ">
+            Ver Todos
           </button>
-
         </div>
 
         <ProductCarousel category={category} />
-
       </div>
     </section>
-  )
+  );
 }
