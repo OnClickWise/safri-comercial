@@ -188,6 +188,12 @@ export function Header() {
           <MobileLink href="/galeria">Galeria</MobileLink>
 
           <MobileLink href="/contacto">Contacto</MobileLink>
+          <MobileLink href="/loja" className="hidden md:block">
+            <Button className="rounded-full px-6 flex items-center gap-2">
+              <Store size={18} />
+              Catálogo
+            </Button>
+          </MobileLink>
         </div>
       )}
     </header>
