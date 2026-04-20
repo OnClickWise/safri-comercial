@@ -46,7 +46,7 @@ const sectors = [
   {
     title: "Educação & Projetos Académicos",
     desc: "Instituto Superior e formação técnica",
-    image: "/images/services/educacao.jpg",
+    image: "/images/services/educacao2.jpeg",
   },
   {
     title: "Agro-Pecuária",

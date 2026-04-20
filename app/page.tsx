@@ -3,7 +3,7 @@ import { BusinessAreas } from "@/components/sections/business-areas";
 import { Cta } from "@/components/sections/cta";
 import { Differentiators } from "@/components/sections/differentiators";
 import { Hero } from "@/components/sections/hero";
-import { Partners } from "@/components/sections/partners";
+//import { Partners } from "@/components/sections/partners";
 
 
 export default function Home() {
@@ -13,7 +13,7 @@ export default function Home() {
       <AboutPreview />
       <BusinessAreas />
       <Differentiators />
-      <Partners />
+      {/*<Partners />*/}
       <Cta />
     </div>
   );

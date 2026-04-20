@@ -14,7 +14,7 @@ import {
 
 const areas = [
   {
-    title: "Comércio",
+    title: "Comércio Geral",
     desc: "Fornecimento estratégico de bens alimentares, industriais e mobiliário com capacidade logística para atender grandes volumes e contratos institucionais.",
     icon: ShoppingCart,
   },
@@ -31,7 +31,7 @@ const areas = [
     icon: GraduationCap,
   },
   {
-    title: "Transportes & Logística",
+    title: "Logística",
     desc: "Operações logísticas com frota própria preparada para cargas pesadas, distribuição regional e suporte a projectos de grande escala.",
     icon: Truck,
   },
@@ -44,11 +44,6 @@ const areas = [
     title: "Importação",
     desc: "Ligação directa a mercados globais com sourcing eficiente, redução de custos e garantia de abastecimento contínuo.",
     icon: Globe,
-  },
-  {
-    title: "Construção Civil & Obras Públicas",
-    desc: "Execução de infraestruturas com equipa técnica qualificada, meios próprios e capacidade real de entrega dentro de prazos exigentes.",
-    icon: Building2,
   },
   {
     title: "Agro-Pecuária",

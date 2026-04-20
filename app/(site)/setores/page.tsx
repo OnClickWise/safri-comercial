@@ -81,7 +81,7 @@ const services = [
       "Laboratórios, anfiteatro e blocos académicos",
       "Formação técnica e científica local",
     ],
-    image: "/images/services/educacao.jpg",
+    image: "/images/services/educacao2.jpeg",
   },
   {
     title: "Agro-Pecuária",
