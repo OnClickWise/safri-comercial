@@ -82,6 +82,9 @@ const services = [
       "Formação técnica e científica local",
     ],
     image: "/images/services/educacao2.jpeg",
+
+    // 🔥 LINK EXTERNO ADICIONADO
+    externalLink: "https://www.ispndunduma.co.ao/",
   },
   {
     title: "Agro-Pecuária",
@@ -101,15 +104,12 @@ const services = [
 export default function AreasPage() {
   return (
     <main>
-
-      {/* HERO */}
       <PageHero
         title="Áreas de Atuação"
         description="A SAFRI atua em múltiplos sectores estratégicos da economia angolana, com estrutura própria, capacidade operacional e execução comprovada em projetos de grande escala."
         image="/images/safri-metal.png"
       />
 
-      {/* INTRO INSTITUCIONAL */}
       <section className="py-20 border-b border-border">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <p className="text-lg text-muted-foreground leading-relaxed">
@@ -121,71 +121,67 @@ export default function AreasPage() {
         </div>
       </section>
 
-      {/* SERVIÇOS */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-6 space-y-28">
+          {services.map((service, index) => {
+            const isExternal = !!service.externalLink
+            const href = service.externalLink || "https://wa.me/244923019166"
 
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className={`grid md:grid-cols-2 gap-12 items-center ${
-                index % 2 !== 0 ? "md:[&>*:first-child]:order-2" : ""
-              }`}
-            >
-
-              {/* IMAGEM */}
-              <div className="relative h-[320px] md:h-[420px] rounded-3xl overflow-hidden shadow-xl">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-
-              {/* TEXTO */}
-              <div>
-
-                <h2 className="text-3xl lg:text-4xl font-bold leading-tight">
-                  {service.title}
-                </h2>
-
-                <p className="mt-4 text-lg text-muted-foreground">
-                  {service.description}
-                </p>
-
-                <ul className="mt-6 space-y-3 text-muted-foreground">
-                  {service.items.map((item, i) => (
-                    <li key={i} className="flex gap-2">
-                      <span className="text-primary">•</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-8">
-                  <Link
-                    href="https://wa.me/244923019166"
-                    target="_blank"
-                  >
-                    <Button size="lg" className="px-8">
-                      Solicitar Informações
-                    </Button>
-                  </Link>
+            return (
+              <div
+                key={index}
+                className={`grid md:grid-cols-2 gap-12 items-center ${
+                  index % 2 !== 0 ? "md:[&>*:first-child]:order-2" : ""
+                }`}
+              >
+                <div className="relative h-[320px] md:h-[420px] rounded-3xl overflow-hidden shadow-xl">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
 
-              </div>
-            </div>
-          ))}
+                <div>
+                  <h2 className="text-3xl lg:text-4xl font-bold leading-tight">
+                    {service.title}
+                  </h2>
 
+                  <p className="mt-4 text-lg text-muted-foreground">
+                    {service.description}
+                  </p>
+
+                  <ul className="mt-6 space-y-3 text-muted-foreground">
+                    {service.items.map((item, i) => (
+                      <li key={i} className="flex gap-2">
+                        <span className="text-primary">•</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-8">
+                    <Link
+                      href={href}
+                      target="_blank"
+                    >
+                      <Button size="lg" className="px-8">
+                        {isExternal
+                          ? "Visitar Instituição"
+                          : "Solicitar Informações"}
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
         </div>
       </section>
 
-      {/* CTA FINAL */}
       <section className="py-24 bg-primary text-white text-center">
-
         <div className="max-w-3xl mx-auto px-6">
-
           <h2 className="text-3xl md:text-4xl font-bold">
             Precisa de capacidade real para executar o seu projeto?
           </h2>
@@ -206,11 +202,8 @@ export default function AreasPage() {
               Falar com Especialista
             </Button>
           </Link>
-
         </div>
-
       </section>
-
     </main>
   )
 }

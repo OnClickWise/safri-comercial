@@ -70,7 +70,7 @@ img("saco3.png")
 ],
 
 description:
-"Saco industrial resistente para armazenamento e transporte de mercadorias.",
+"",
 
 variants:[
 {name:"25kg",value:"25kg"},
@@ -96,13 +96,13 @@ slug:"saco-rafia-50kg",
 category:"sacos",
 
 images:[
-img("sacola1.png"),
+img("saco2.png"),
 img("sacola2.png"),
 img("sacola2.png")
 ],
 
 description:
-"Ideal para batata, frutas, logística e materiais de grande volume.",
+"Ideal para batata, frutas, e frãos.",
 
 variants:[
 {name:"50kg",value:"50kg"},
@@ -119,20 +119,20 @@ specs:[
 {
 id:"saco-laminado",
 
-name:"Saco Laminado",
+name:"Saco Normais e Laminado",
 
 slug:"saco-laminado",
 
 category:"sacos",
 
 images:[
-img("saco4.png"),
+img("saco5.png"),
 img("saco2.png"),
 img("saco3.png")   
 ],
 
 description:
-"Saco laminado com proteção contra umidade e maior conservação.",
+"",
 
 specs:[
 {label:"Tipo",value:"Laminado"},
@@ -144,20 +144,20 @@ specs:[
 {
 id:"saco-personalizado",
 
-name:"Saco Personalizado",
+name:"Sacos Normais e Laminado",
 
 slug:"saco-personalizado",
 
 category:"sacos",
 
 images:[
-img("sacola2.png"),
+img("saco4.png"),
 img("sacola1.png"),
 img("sacola2.png")
 ],
 
 description:
-"Sacos personalizados com impressão para marcas e operações comerciais.",
+"",
 
 specs:[
 {label:"Customização",value:"Sim"},
@@ -295,7 +295,7 @@ img("caderno4.png")
 ],
 
 description:
-"Caderno brochura para uso escolar e distribuição institucional.",
+"",
 
 variants:[
 {name:"96 folhas",value:"96"},
@@ -324,7 +324,7 @@ img("caderno1.png")
 ],
 
 description:
-"Caderno espiral resistente para estudantes.",
+"",
 
 variants:[
 {name:"100 folhas",value:"100"},
@@ -353,7 +353,7 @@ img("caderno4.png")
 ],
 
 description:
-"Caderno premium com capa dura e alta durabilidade.",
+"",
 
 specs:[
 {label:"Capa",value:"Dura"}
@@ -377,7 +377,7 @@ img("caderno1.png")
 ],
 
 description:
-"Caderno universitário com divisórias para múltiplas matérias.",
+"",
 
 variants:[
 {name:"5 matérias",value:"5"},

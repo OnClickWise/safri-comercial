@@ -30,7 +30,7 @@ const sectors = [
   },
   {
     title: "Transportes & Logística",
-    desc: "Frota pesada e distribuição nacional",
+    desc: "Frota para apoio logístico interno para a distribuição nacional",
     image: "/images/services/logistica.jpg",
   },
   {
