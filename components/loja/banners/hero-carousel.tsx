@@ -6,310 +6,121 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+const WHATSAPP_URL =
+  "https://api.whatsapp.com/send/?phone=244922100548&text&type=phone_number&app_absent=0";
+
 const slides = [
-  {
-    title: "Carteiras Escolares de Alta Durabilidade",
-
-    subtitle:
-      "Mobiliário escolar resistente para escolas, instituições e projetos públicos.",
-
-    description:
-      "Produção e fornecimento em escala com qualidade, durabilidade e condições competitivas para compras institucionais.",
-
-    image: "/images/banner-loja/loja-banner1.png",
-
-    cta: "Ver Carteiras",
-
-    link: "/loja?categoria=carteiras",
-  },
-
-  {
-    title: "Quadros Negros Profissionais para Salas de Aula",
-
-    subtitle:
-      "Soluções para ensino com acabamento resistente e longa vida útil.",
-
-    description:
-      "Fornecimento para escolas, centros de formação e projetos educacionais com entrega sob encomenda.",
-
-    image: "/images/banner-loja/loja-banner2.png",
-
-    cta: "Solicitar Cotação",
-
-    link: "/loja?categoria=quadros",
-  },
-
-  {
-    title: "Sacos para Batata e Armazenamento Agrícola",
-
-    subtitle:
-      "Resistência industrial para transporte, logística e conservação.",
-
-    description:
-      "Sacos reforçados para uso agrícola e comercial, ideais para grandes volumes com fornecimento contínuo.",
-
-    image: "/images/banner-loja/loja-banner3.png",
-
-    cta: "Ver Sacos",
-
-    link: "/loja?categoria=sacos",
-  },
-
-  {
-    title: "Sacos Industriais Personalizados",
-
-    subtitle:
-      "Embalagens para operações comerciais, industriais e distribuição.",
-
-    description:
-      "Modelos laminados, ráfia e personalizados com opções para diferentes cargas e necessidades operacionais.",
-
-    image: "/images/banner-loja/loja-banner4.png",
-
-    cta: "Explorar Produtos",
-
-    link: "/loja?categoria=sacos",
-  },
-
-  {
-    title: "Cadernos Escolares para Revenda e Fornecimento",
-
-    subtitle:
-      "Linha escolar para papelarias, escolas e distribuição institucional.",
-
-    description:
-      "Cadernos brochura, espiral e universitários com excelente custo-benefício para compras em quantidade.",
-
-    image: "/images/banner-loja/loja-banner5.png",
-
-    cta: "Ver Cadernos",
-
-    link: "/loja?categoria=cadernos",
-  },
+  { image: "/images/banner-loja/loja-banner1.png", alt: "Banner carteiras escolares" },
+  { image: "/images/banner-loja/loja-banner2.png", alt: "Banner quadros negros" },
+  { image: "/images/banner-loja/loja-banner3.png", alt: "Banner cadeira e mesa infantil" },
+  { image: "/images/banner-loja/loja-banner4.png", alt: "Banner sacos industriais personalizados" },
+  { image: "/images/banner-loja/loja-banner5.png", alt: "Banner cadernos escolares" },
 ];
 
 export default function HeroCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
+    align: "start",
   });
 
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
-  const scrollPrev = () => emblaApi?.scrollPrev();
-  const scrollNext = () => emblaApi?.scrollNext();
+  const scrollPrev = React.useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = React.useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   React.useEffect(() => {
     if (!emblaApi) return;
 
-    const onSelect = () => {
-      setSelectedIndex(emblaApi.selectedScrollSnap());
-    };
+    const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
 
+    onSelect();
     emblaApi.on("select", onSelect);
 
-    const autoplay = setInterval(() => {
+    const autoplay = window.setInterval(() => {
       emblaApi.scrollNext();
     }, 6000);
 
     return () => {
-      clearInterval(autoplay);
+      window.clearInterval(autoplay);
       emblaApi.off("select", onSelect);
     };
   }, [emblaApi]);
 
   return (
     <section className="bg-background py-8">
-      <div className="container mx-auto">
-        <div className="relative">
-          <div ref={emblaRef} className="overflow-hidden rounded-[28px]">
+      <div className="w-full px-4">
+        <div className="relative mx-auto w-full max-w-[1920px]">
+          <div ref={emblaRef} className="overflow-hidden">
             <div className="flex">
               {slides.map((slide, index) => (
                 <div
-                  key={index}
+                  key={slide.image}
                   className="
-min-w-full
-relative
-h-[420px]
-md:h-[560px]
-flex
-items-center
-"
+                    relative
+                    min-w-full
+                    h-[220px]
+                    sm:h-[400px]
+                    md:h-[500px]
+                    lg:h-[600px]
+                    xl:h-[730px]
+                    2xl:h-[942px]
+                    bg-black
+                  "
                 >
-                  <Image
-                    src={slide.image}
-                    alt={slide.title}
-                    fill
-                    priority={index === 0}
-                    className="object-cover object-center"
-                  />
-
-                  <div
-                    className="
-absolute
-inset-0
-bg-gradient-to-r
-from-black/80
-via-black/55
-to-black/20
-"
-                  />
-
-                  <div
-                    className="
-relative
-z-10
-w-full
-max-w-3xl
-px-8
-md:px-20
-pt-6
-"
+                  <Link
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Abrir WhatsApp - ${slide.alt}`}
+                    className="block h-full w-full"
                   >
-                    <div
+                    <Image
+                      src={slide.image}
+                      alt={slide.alt}
+                      fill
+                      priority={index === 0}
+                      sizes="100vw"
                       className="
-max-w-2xl
-flex
-flex-col
-justify-center
-"
-                    >
-                      <span
-                        className="
-inline-block
-mb-4
-text-sm
-tracking-widest
-uppercase
-font-medium
-text-primary
-"
-                      >
-                        Fornecimento Profissional
-                      </span>
-
-                      <h1
-                        className="
-text-3xl
-md:text-6xl
-font-bold
-leading-[1.08]
-"
-                      >
-                        {slide.title}
-                      </h1>
-
-                      <p
-                        className="
-mt-5
-text-lg
-md:text-2xl
-text-white/90
-leading-relaxed
-"
-                      >
-                        {slide.subtitle}
-                      </p>
-
-                      <p
-                        className="
-mt-5
-text-sm
-md:text-lg
-text-white/75
-max-w-xl
-leading-relaxed
-"
-                      >
-                        {slide.description}
-                      </p>
-
-                      <div className="flex gap-4 mt-8">
-                        <Link href={slide.link}>
-                          <button
-                            className="
-bg-primary
-px-8
-py-4
-rounded-full
-font-semibold
-shadow-lg
-hover:opacity-90
-transition
-"
-                          >
-                            {slide.cta}
-                          </button>
-                        </Link>
-
-                        <Link href="/quote">
-                          <button
-                            className="
-border
-border-white/50
-px-8
-py-4
-rounded-full
-font-semibold
-hover:bg-white/10
-transition
-"
-                          >
-                            Solicitar Cotação
-                          </button>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
+                        object-contain
+                        object-center
+                      "
+                    />
+                  </Link>
                 </div>
               ))}
             </div>
           </div>
 
           <button
+            type="button"
             onClick={scrollPrev}
-            className="
-absolute
-left-5
-top-1/2
--translate-y-1/2
-bg-white/85
-p-3
-rounded-full
-shadow-lg
-hover:bg-white
-"
+            aria-label="Banner anterior"
+            className="absolute left-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/90 p-3 text-black shadow-lg transition hover:bg-white"
           >
             <ChevronLeft size={20} />
           </button>
 
           <button
+            type="button"
             onClick={scrollNext}
-            className="
-absolute
-right-5
-top-1/2
--translate-y-1/2
-bg-white/85
-p-3
-rounded-full
-shadow-lg
-hover:bg-white
-"
+            aria-label="Próximo banner"
+            className="absolute right-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/90 p-3 text-black shadow-lg transition hover:bg-white"
           >
             <ChevronRight size={20} />
           </button>
 
-          <div className="flex justify-center mt-5 gap-3">
+          <div className="mt-5 flex justify-center gap-3">
             {slides.map((_, index) => (
               <button
                 key={index}
+                type="button"
+                aria-label={`Ir para banner ${index + 1}`}
                 onClick={() => emblaApi?.scrollTo(index)}
-                className={`
-h-2.5
-rounded-full
-transition-all
-${index === selectedIndex ? "w-8 bg-primary" : "w-2.5 bg-muted-foreground/40"}
-`}
+                className={`h-2.5 rounded-full transition-all ${
+                  index === selectedIndex
+                    ? "w-8 bg-primary"
+                    : "w-2.5 bg-muted-foreground/40"
+                }`}
               />
             ))}
           </div>

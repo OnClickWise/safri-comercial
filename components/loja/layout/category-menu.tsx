@@ -2,188 +2,119 @@
 
 import * as React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useFilter } from "@/store/filter-store";
-import { useRouter } from "next/navigation";
 
-const categories = [
-  { name: "Todos", value: "", image: "/images/categories/categoria1.png" },
+type Category = {
+  name: string;
+  image: string;
+  whatsappText: string;
+};
 
+const WHATSAPP_PHONE = "244922100548";
+
+const createWhatsappLink = (text: string) =>
+  `https://api.whatsapp.com/send/?phone=${WHATSAPP_PHONE}&text=${encodeURIComponent(
+    text
+  )}&type=phone_number&app_absent=0`;
+
+const categories: Category[] = [
   {
-    name: "Sacos Industriais",
-    value: "sacos",
+    name: "Todos",
+    image: "/images/categories/categoria0.jpg",
+    whatsappText: "Olá, gostaria de saber mais sobre todos os produtos da loja.",
+  },
+  {
+    name: "Sacos Laminados",
     image: "/images/categories/categoria1.png",
+    whatsappText: "Olá, gostaria de solicitar informações sobre Sacos Laminados.",
   },
-
-  {
-    name: "Carteiras Escolares",
-    value: "carteiras",
-    image: "/images/categories/categoria9.png",
-  },
-
-  {
-    name: "Mais Escolar",
-    value: "mais-escolar",
-    image: "/images/categories/categoria18.png",
-  },
-
-  {
-    name: "Quadros Escolares",
-    value: "quadros",
-    image: "/images/categories/categoria4.png",
-  },
-
-
-  {
-    name: "Estoque",
-    value: "estoque",
-    image: "/images/categories/categoria6.png",
-  },
-
-  {
-    name: "Quadro Negro",
-    value: "quadros-negro",
-    image: "/images/categories/categoria8.png",
-  },
-
-  {
-    name: "Logística",
-    value: "logistica",
-    image: "/images/categories/categoria5.png",
-  },
-
-  { name: "Agro", 
-    value: "agro", 
-    image: "/images/categories/categoria1.png" },
-
-  {
-    name: "Mais em vendas",
-    value: "mais-vendidos",
-    image: "/images/categories/categoria17.png",
-  },
-
-  {
-    name: "Produção",
-    value: "producao",
-    image: "/images/categories/categoria12.png",
-  },
-
-  { name: "EPIs", value: "epis", image: "/images/categories/categoria13.png" },
-
-  {
-    name: "Mobiliário",
-    value: "mobiliario",
-    image: "/images/categories/categoria14.png",
-  },
-
-  {
-    name: "Armazém",
-    value: "armazem",
-    image: "/images/categories/categoria6.png",
-  },
-
-  {
-    name: "Embalagens",
-    value: "embalagens",
-    image: "/images/categories/categoria12.png",
-  },
-
-  {
-    name: "Estocagem",
-    value: "estocagem",
-    image: "/images/categories/categoria9.png",
-  },
-
-  {
-    name: "Equipa",
-    value: "equipa",
-    image: "/images/categories/categoria13.png",
-  },
-
-  {
-    name: "Institucional",
-    value: "institucional",
-    image: "/images/categories/categoria15.png",
-  },
-
   {
     name: "Sacos Personalizados",
-    value: "Sacos",
+    image: "/images/categories/categoria3.png",
+    whatsappText:
+      "Olá, gostaria de solicitar informações sobre Sacos Personalizados.",
+  },
+  {
+    name: "Sacos de Batata",
+    image: "/images/categories/categoria2.png",
+    whatsappText: "Olá, gostaria de solicitar informações sobre Sacos de Batata.",
+  },
+  {
+    name: "Estoque",
+    image: "/images/categories/categoria6.png",
+    whatsappText: "Olá, gostaria de consultar os produtos disponíveis em estoque.",
+  },
+  {
+    name: "Quadro Negro",
+    image: "/images/categories/categoria6.png",
+    whatsappText: "Olá, gostaria de solicitar informações sobre Quadros Negros.",
+  },
+  {
+    name: "Carteiras Escolares",
+    image: "/images/categories/categoria7.png",
+    whatsappText:
+      "Olá, gostaria de solicitar informações sobre Carteiras Escolares.",
+  },
+  {
+    name: "Cadeira e Mesa Infantil",
     image: "/images/categories/categoria4.png",
+    whatsappText:
+      "Olá, gostaria de solicitar informações sobre Cadeiras e Mesas Infantis.",
+  },
+  {
+    name: "Cadernos Escolares",
+    image: "/images/categories/categoria5.png",
+    whatsappText:
+      "Olá, gostaria de solicitar informações sobre Cadernos Escolares.",
   },
 ];
 
 export default function CategoryMenu() {
-  const { category, setCategory } = useFilter();
-
-  const router = useRouter();
-
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: true,
+    loop: false,
     align: "start",
+    dragFree: true,
   });
 
-  const scrollPrev = () => emblaApi?.scrollPrev();
-  const scrollNext = () => emblaApi?.scrollNext();
-
-  React.useEffect(() => {
-    if (!emblaApi) return;
-
-    const autoplay = setInterval(() => {
-      emblaApi.scrollNext();
-    }, 3500);
-
-    return () => clearInterval(autoplay);
+  const scrollPrev = React.useCallback(() => {
+    emblaApi?.scrollPrev();
   }, [emblaApi]);
 
-  const handleClick = (value: string) => {
-    setCategory(value);
-    router.push(`/loja${value ? `?categoria=${value}` : ""}`);
-  };
+  const scrollNext = React.useCallback(() => {
+    emblaApi?.scrollNext();
+  }, [emblaApi]);
 
   return (
-    <section
-      className="
-bg-background
-border-b
-border-border
-py-8
-"
-    >
-      <div className="container mx-auto">
-        <div className="flex items-center justify-between mb-6">
+    <section className="border-b border-border bg-background py-8">
+      <div className="container mx-auto px-4">
+        <div className="mb-6 flex items-center justify-between gap-4">
           <div>
-            <h3 className="text-xl md:text-2xl font-bold">
+            <h3 className="text-xl font-bold md:text-2xl">
               Explore Categorias
             </h3>
 
             <p className="text-sm text-muted-foreground">
-              Produtos organizados por segmentos e linhas de fornecimento
+              Clique na categoria e fale diretamente pelo WhatsApp
             </p>
           </div>
 
-          <div className="flex gap-3">
+          <div className="flex shrink-0 gap-3">
             <button
+              type="button"
               onClick={scrollPrev}
-              className="
-p-3
-rounded-full
-border
-hover:shadow-md
-"
+              aria-label="Categorias anteriores"
+              className="rounded-full border p-3 transition hover:bg-muted hover:shadow-md"
             >
               <ChevronLeft size={18} />
             </button>
 
             <button
+              type="button"
               onClick={scrollNext}
-              className="
-p-3
-rounded-full
-border
-hover:shadow-md
-"
+              aria-label="Próximas categorias"
+              className="rounded-full border p-3 transition hover:bg-muted hover:shadow-md"
             >
               <ChevronRight size={18} />
             </button>
@@ -192,85 +123,34 @@ hover:shadow-md
 
         <div ref={emblaRef} className="overflow-hidden">
           <div className="flex">
-            {categories.map((cat, index) => {
-              const active = category === cat.value;
-
-              return (
-                <div
-                  key={index}
-                  className="
-min-w-[130px]
-md:min-w-[150px]
-mr-5
-"
+            {categories.map((cat) => (
+              <div
+                key={cat.name}
+                className="mr-5 min-w-[130px] md:min-w-[150px]"
+              >
+                <Link
+                  href={createWhatsappLink(cat.whatsappText)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Falar no WhatsApp sobre ${cat.name}`}
+                  className="group flex w-full flex-col items-center"
                 >
-                  <button
-                    onClick={() => handleClick(cat.value)}
-                    className="
-w-full
-flex
-flex-col
-items-center
-group
-"
-                  >
-                    <div
-                      className={`
-relative
-w-[90px]
-h-[90px]
-md:w-[110px]
-md:h-[110px]
-rounded-full
-overflow-hidden
-border
-transition-all
-duration-300
+                  <div className="relative h-[90px] w-[90px] overflow-hidden rounded-full border border-border bg-muted transition-all duration-300 group-hover:scale-105 group-hover:shadow-md md:h-[110px] md:w-[110px]">
+                    <Image
+                      src={cat.image}
+                      alt={cat.name}
+                      fill
+                      sizes="120px"
+                      className="object-cover"
+                    />
+                  </div>
 
-${
-  active
-    ? "border-primary scale-105 ring-4 ring-primary/20 shadow-lg"
-    : "border-border group-hover:scale-105 group-hover:shadow-md"
-}
-`}
-                    >
-                      <Image
-                        src={cat.image}
-                        alt={cat.name}
-                        fill
-                        sizes="120px"
-                        className="object-cover"
-                      />
-
-                      {active && (
-                        <div
-                          className="
-absolute
-inset-0
-bg-primary/10
-"
-                        />
-                      )}
-                    </div>
-
-                    <span
-                      className={`
-mt-3
-text-xs
-md:text-sm
-font-medium
-text-center
-leading-tight
-
-${active ? "text-primary" : "text-muted-foreground group-hover:text-foreground"}
-`}
-                    >
-                      {cat.name}
-                    </span>
-                  </button>
-                </div>
-              );
-            })}
+                  <span className="mt-3 text-center text-xs font-medium leading-tight text-muted-foreground transition group-hover:text-foreground md:text-sm">
+                    {cat.name}
+                  </span>
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
       </div>

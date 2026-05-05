@@ -1,5 +1,5 @@
-import Image from "next/image"
-import { PageHero } from "@/components/sections/page-hero"
+import Image from "next/image";
+import { PageHero } from "@/components/sections/page-hero";
 
 export default function EmpresaPage() {
   return (
@@ -12,22 +12,20 @@ export default function EmpresaPage() {
       />
 
       <section className="w-full py-20 lg:py-28">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-
+        <div className="mx-auto max-w-7xl px-6 lg:px-12">
+          <div className="grid items-start gap-16 lg:grid-cols-2">
             {/* LADO ESQUERDO - IMAGENS */}
             <div className="flex flex-col gap-8">
-
               {/* INFRAESTRUTURA */}
-              <div className="relative w-full h-[320px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl">
+              <div className="relative h-[320px] w-full overflow-hidden rounded-3xl shadow-xl sm:h-[420px]">
                 <Image
                   src="/images/safri-intraestrutura.jpg"
                   alt="Infraestrutura SAFRI"
                   fill
-                  className="object-cover"
+                  className="object-cover object-center"
                   priority
                 />
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
                 <div className="absolute bottom-6 left-6 text-white">
@@ -41,85 +39,103 @@ export default function EmpresaPage() {
               </div>
 
              {/* CEO */}
-            <div className="relative w-full h-[480px] sm:h-[460px] lg:h-[520px] rounded-3xl overflow-hidden shadow-xl">
-              <Image
-                src="/images/safri-ceo.png"
-                alt="CEO SAFRI"
-                fill
-                className="object-cover object-center"
-              />
+<div
+  className="
+    relative
+    flex
+    h-[520px]                 /* 🔥 maior */
+    w-full
+    items-end
+    justify-center
+    overflow-hidden
+    rounded-3xl
+    bg-gradient-to-b
+    from-muted/40
+    to-muted
+    shadow-xl
+    sm:h-[560px]
+    lg:h-[540px]
+  "
+>
+  <Image
+    src="/images/safri-ceo.png"
+    alt="CEO SAFRI"
+    fill
+    className="
+      object-contain
+      object-bottom
+      px-4              /* 🔥 menos lateral */
+      pt-4              /* 🔥 menos topo */
+      -mb-4             /* 🔥 puxa pra baixo (efeito premium) */
+      scale-110         /* 🔥 aumenta presença */
+    "
+  />
 
-              {/* overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+  {/* overlay */}
+  <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
 
-              {/* conteúdo */}
-              <div className="absolute bottom-6 left-6 text-white">
-                <h3 className="text-lg font-semibold">
-                  Liderança Estratégica
-                </h3>
-                <p className="text-sm text-white/80">
-                  Gestão orientada para crescimento e resultados
-                </p>
-              </div>
-            </div>
-
+  {/* conteúdo */}
+  <div className="absolute bottom-6 left-6 right-6 text-white">
+    <h3 className="text-lg font-semibold">
+      Liderança Estratégica
+    </h3>
+    <p className="text-sm text-white/80">
+      Gestão orientada para crescimento e resultados
+    </p>
+  </div>
+</div>
             </div>
 
             {/* LADO DIREITO - CONTEÚDO */}
             <div className="space-y-12">
-
               {/* QUEM SOMOS */}
               <div>
-                <h2 className="text-3xl lg:text-4xl font-bold leading-tight">
+                <h2 className="text-3xl font-bold leading-tight lg:text-4xl">
                   Uma empresa construída para executar, crescer e liderar
                 </h2>
 
-                <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
-                  A <strong>SAFRI Comercial, Lda.</strong> é uma empresa angolana com mais de
-                  duas décadas de experiência, posicionada como um parceiro estratégico
-                  para projetos que exigem capacidade real de execução, estrutura sólida
-                  e eficiência operacional.
+                <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+                  A <strong>SAFRI Comercial, Lda.</strong> é uma empresa angolana
+                  com mais de duas décadas de experiência, posicionada como um
+                  parceiro estratégico para projetos que exigem capacidade real de
+                  execução, estrutura sólida e eficiência operacional.
                 </p>
 
-                <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-                  Atuamos em sectores-chave da economia, integrando comércio, logística,
-                  indústria, construção e agro-pecuária, com operações próprias que garantem
-                  controlo, escala e consistência em cada entrega.
+                <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+                  Atuamos em sectores-chave da economia, integrando comércio,
+                  logística, indústria, construção e agro-pecuária, com operações
+                  próprias que garantem controlo, escala e consistência em cada
+                  entrega.
                 </p>
               </div>
 
               {/* MISSÃO + VISÃO */}
-              <div className="grid sm:grid-cols-2 gap-8">
-
+              <div className="grid gap-8 sm:grid-cols-2">
                 <div>
-                  <h3 className="text-xl font-semibold mb-3">
-                    Missão
-                  </h3>
+                  <h3 className="mb-3 text-xl font-semibold">Missão</h3>
                   <p className="text-muted-foreground">
-                    Desenvolver e executar soluções integradas que impulsionem o crescimento
-                    económico, garantindo eficiência, qualidade e impacto sustentável.
+                    Desenvolver e executar soluções integradas que impulsionem o
+                    crescimento económico, garantindo eficiência, qualidade e impacto
+                    sustentável.
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-semibold mb-3">
-                    Visão
-                  </h3>
+                  <h3 className="mb-3 text-xl font-semibold">Visão</h3>
                   <p className="text-muted-foreground">
                     Ser referência em Angola e além-fronteiras na execução de projetos
                     estruturais e serviços integrados de alta performance.
                   </p>
                 </div>
-
               </div>
 
               {/* VALORES */}
               <div>
-                <h3 className="text-xl font-semibold mb-4">
+                <h3 className="mb-4 text-xl font-semibold">
                   Princípios que orientam a nossa atuação
                 </h3>
 
-                <ul className="grid sm:grid-cols-2 gap-3 text-muted-foreground">
+                <ul className="grid gap-3 text-muted-foreground sm:grid-cols-2">
                   <li>• Integridade e transparência</li>
                   <li>• Foco em resultados</li>
                   <li>• Excelência operacional</li>
@@ -130,43 +146,37 @@ export default function EmpresaPage() {
               </div>
 
               {/* INFRA + PARCEIROS */}
-              <div className="grid sm:grid-cols-2 gap-8">
-
+              <div className="grid gap-8 sm:grid-cols-2">
                 <div>
-                  <h3 className="text-xl font-semibold mb-3">
-                    Infraestrutura
-                  </h3>
+                  <h3 className="mb-3 text-xl font-semibold">Infraestrutura</h3>
                   <p className="text-muted-foreground">
                     Dispomos de armazéns, frota própria, unidades industriais e meios
-                    técnicos que garantem execução eficiente de projetos de grande escala.
+                    técnicos que garantem execução eficiente de projetos de grande
+                    escala.
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-semibold mb-3">
-                    Parcerias
-                  </h3>
+                  <h3 className="mb-3 text-xl font-semibold">Parcerias</h3>
                   <p className="text-muted-foreground">
-                    Trabalhamos com entidades públicas, privadas e parceiros internacionais,
-                    fortalecendo a capacidade de entrega e expansão dos nossos projetos.
+                    Trabalhamos com entidades públicas, privadas e parceiros
+                    internacionais, fortalecendo a capacidade de entrega e expansão dos
+                    nossos projetos.
                   </p>
                 </div>
-
               </div>
 
               {/* BLOCO DE AUTORIDADE */}
-              <div className="bg-muted/40 border border-border rounded-2xl p-6">
-
-                <p className="text-base sm:text-lg font-medium">
-                  +25 anos de experiência • Estrutura própria • Execução comprovada • Cobertura nacional
+              <div className="rounded-2xl border border-border bg-muted/40 p-6">
+                <p className="text-base font-medium sm:text-lg">
+                  +25 anos de experiência • Estrutura própria • Execução comprovada •
+                  Cobertura nacional
                 </p>
-
               </div>
-
             </div>
           </div>
         </div>
       </section>
     </>
-  )
+  );
 }

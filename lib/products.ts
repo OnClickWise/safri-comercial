@@ -57,7 +57,7 @@ export const products:Product[]=[
 {
 id:"saco-rafia-25",
 
-name:"Saco de Ráfia 25kg",
+name:"Sacos",
 
 slug:"saco-rafia-25kg",
 
@@ -89,20 +89,20 @@ specs:[
 {
 id:"saco-rafia-50",
 
-name:"Saco de Ráfia 50kg",
+name:"Sacos",
 
 slug:"saco-rafia-50kg",
 
 category:"sacos",
 
 images:[
-img("saco1.png"),
-img("saco2.png"),
-img("saco3.png")
+img("sacola1.png"),
+img("sacola2.png"),
+img("sacola2.png")
 ],
 
 description:
-"Ideal para grãos, logística e materiais de grande volume.",
+"Ideal para batata, frutas, logística e materiais de grande volume.",
 
 variants:[
 {name:"50kg",value:"50kg"},
@@ -126,7 +126,9 @@ slug:"saco-laminado",
 category:"sacos",
 
 images:[
-img("saco1.png")
+img("saco4.png"),
+img("saco2.png"),
+img("saco3.png")   
 ],
 
 description:
@@ -149,9 +151,9 @@ slug:"saco-personalizado",
 category:"sacos",
 
 images:[
-img("saco1.png"),
-img("saco2.png"),
-img("saco3.png")
+img("sacola2.png"),
+img("sacola1.png"),
+img("sacola2.png")
 ],
 
 description:
@@ -179,9 +181,9 @@ slug:"carteira-escolar-dupla",
 category:"carteiras",
 
 images:[
-img("carteirag1.png"),
-img("carteirag2.png"),
-img("carteira3.png")
+img("carteirag3.png"),
+img("carteirag8.png"),
+img("carteirag8.png")
 ],
 
 description:
@@ -202,19 +204,20 @@ specs:[
 {
 id:"carteira-universitaria",
 
-name:"Carteira Universitária",
+name:"Carteira Individual",
 
 slug:"carteira-universitaria",
 
 category:"carteiras",
 
 images:[
-img("carteirag1.png"),
-img("carteirag4.png")
+img("carteirag2.png"),
+img("carteirag4.png"),
+img("carteirag4.png"),
 ],
 
 description:
-"Modelo universitário com apoio lateral e estrutura reforçada.",
+"Modelo Individual.",
 
 specs:[
 {label:"Material",value:"Metal + Madeira"},
@@ -233,8 +236,9 @@ slug:"carteira-escolar-infantil",
 category:"carteiras",
 
 images:[
-img("carteirag1.png"),
-img("carteirag4.png")
+img("carteirag7.png"),
+img("carteirag6.png"),
+img("carteirag5.png")
 ],
 
 description:
@@ -256,8 +260,9 @@ slug:"mesa-escolar",
 category:"carteiras",
 
 images:[
-img("carteirag1.png"),
-img("carteirag2.png")
+img("mesa2.png"),
+img("mesa2.png"),
+img("mesa.jpeg")
 ],
 
 description:
@@ -277,7 +282,7 @@ specs:[
 {
 id:"caderno-brochura",
 
-name:"Caderno Brochura",
+name:"Caderno Escolar",
 
 slug:"caderno-brochura",
 
@@ -285,7 +290,8 @@ category:"cadernos",
 
 images:[
 img("caderno1.png"),
-img("caderno2.png")
+img("caderno3.png"),
+img("caderno4.png")
 ],
 
 description:
@@ -305,15 +311,16 @@ specs:[
 {
 id:"caderno-espiral",
 
-name:"Caderno Espiral",
+name:"Caderno Escolar",
 
 slug:"caderno-espiral",
 
 category:"cadernos",
 
 images:[
-img("caderno1.png"),
-img("caderno2.png")
+img("caderno4.png"),
+img("caderno3.png"),
+img("caderno1.png")
 ],
 
 description:
@@ -333,15 +340,16 @@ specs:[
 {
 id:"caderno-capa-dura",
 
-name:"Caderno Capa Dura",
+name:"Caderno Escolar",
 
 slug:"caderno-capa-dura",
 
 category:"cadernos",
 
 images:[
-img("caderno1.png"),
-img("caderno3.png")
+img("caderno2.png"),
+img("caderno4.png"),
+img("caderno4.png")
 ],
 
 description:
@@ -356,15 +364,16 @@ specs:[
 {
 id:"caderno-universitario",
 
-name:"Caderno Universitário",
+name:"Caderno Escolar",
 
 slug:"caderno-universitario",
 
 category:"cadernos",
 
 images:[
-img("caderno2.png"),
-img("caderno3.png")
+img("caderno3.png"),
+img("caderno4.png"),
+img("caderno1.png")
 ],
 
 description:
