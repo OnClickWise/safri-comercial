@@ -86,7 +86,7 @@ export default function TopBar() {
             </Link>
 
             <Link
-              href="https://facebook.com"
+              href="https://www.facebook.com/share/1CYHXjwSt5/"
               target="_blank"
               className="text-muted-foreground hover:text-primary transition-colors"
             >

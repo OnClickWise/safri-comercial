@@ -33,7 +33,7 @@ export function Footer() {
 
             {/* SOCIAL */}
             <div className="flex gap-3 mt-6">
-              <SocialIcon href="https://facebook.com">
+              <SocialIcon href="https://www.facebook.com/share/1CYHXjwSt5/">
                 <Facebook size={18} />
               </SocialIcon>
 
