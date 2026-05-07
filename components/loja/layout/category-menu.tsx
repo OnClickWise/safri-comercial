@@ -26,18 +26,18 @@ const categories: Category[] = [
     whatsappText: "Olá, gostaria de saber mais sobre todos os produtos da loja.",
   },
   {
-    name: "Sacos Laminados",
+    name: "Sacos Normais e Laminados",
     image: "/images/categories/categoria1.png",
     whatsappText: "Olá, gostaria de solicitar informações sobre Sacos Laminados.",
   },
   {
-    name: "Sacos Personalizados",
+    name: "Sacos Normais e Laminados",
     image: "/images/categories/categoria3.png",
     whatsappText:
       "Olá, gostaria de solicitar informações sobre Sacos Personalizados.",
   },
   {
-    name: "Sacos de Batata",
+    name: "Sacos de Rafia",
     image: "/images/categories/categoria2.png",
     whatsappText: "Olá, gostaria de solicitar informações sobre Sacos de Batata.",
   },

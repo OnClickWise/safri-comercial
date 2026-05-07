@@ -57,7 +57,7 @@ export const products:Product[]=[
 {
 id:"saco-rafia-25",
 
-name:"Sacos",
+name:"Saco Normais e Laminado",
 
 slug:"saco-rafia-25kg",
 
@@ -89,7 +89,7 @@ specs:[
 {
 id:"saco-rafia-50",
 
-name:"Sacos",
+name:"Saco Normais e Laminado",
 
 slug:"saco-rafia-50kg",
 
@@ -102,7 +102,7 @@ img("sacola2.png")
 ],
 
 description:
-"Ideal para batata, frutas, e frãos.",
+"",
 
 variants:[
 {name:"50kg",value:"50kg"},
@@ -152,8 +152,8 @@ category:"sacos",
 
 images:[
 img("saco4.png"),
-img("sacola1.png"),
-img("sacola2.png")
+img("saco3.png"),
+img("saco2.png")
 ],
 
 description:
