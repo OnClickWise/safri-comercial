@@ -1,26 +1,19 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { useState } from "react";
-import Image from "next/image";
-
-import { Button } from "@/components/ui/button";
-import { Logo } from "@/components/logo";
-import { ThemeToggle } from "@/components/theme-toggle";
-
+import Link from "next/link"
+import { useState } from "react"
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { Logo } from "@/components/logo"
+import { ThemeToggle } from "@/components/theme-toggle"
 import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
-
-import {
-  Menu,
-  X,
-  Store,
-} from "lucide-react";
+} from "@/components/ui/navigation-menu"
+import { Menu, X, Store } from "lucide-react"
 
 const sectors = [
   {
@@ -30,11 +23,11 @@ const sectors = [
   },
   {
     title: "Transportes & Logística",
-    desc: "Frota para apoio logístico interno para a distribuição nacional",
+    desc: "Frota para apoio logístico interno e distribuição nacional",
     image: "/images/services/logistica.jpg",
   },
   {
-    title: "Indústria (SAFRI-METAL)",
+    title: "Indústria SAFRI-METAL",
     desc: "Produção de mobiliário e soluções industriais",
     image: "/images/services/industria.jpg",
   },
@@ -53,92 +46,94 @@ const sectors = [
     desc: "Produção agrícola e investigação científica",
     image: "/images/services/agro.jpg",
   },
-];
+]
 
 export function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeImage, setActiveImage] = useState(sectors[0].image);
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const [activeImage, setActiveImage] = useState(sectors[0].image)
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/70 backdrop-blur-xl">
-
-      <div className="flex w-full h-16 items-center justify-between px-6 lg:px-12">
-
-        {/* LOGO */}
-        <Link href="/">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-xl">
+      <div className="flex h-[72px] w-full items-center justify-between px-4 sm:px-5 lg:px-6 xl:px-8">
+        <Link href="/" className="flex shrink-0 items-center">
           <Logo />
         </Link>
 
-        {/* DESKTOP */}
-        <div className="hidden lg:flex items-center gap-10">
-
+        <div className="hidden flex-1 items-center justify-center px-6 lg:flex">
           <NavigationMenu>
-            <NavigationMenuList>
-
+            <NavigationMenuList className="flex items-center gap-1">
               <NavigationMenuItem>
                 <NavLink href="/">Home</NavLink>
               </NavigationMenuItem>
 
-              {/* EMPRESA */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Empresa</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="h-10 px-4 text-[13px] font-semibold">
+                  Empresa
+                </NavigationMenuTrigger>
 
                 <NavigationMenuContent>
-                  <div className="w-[280px] p-6 space-y-3">
+                  <div className="w-[300px] space-y-1 p-4">
                     <DropdownLink href="/empresa" label="Sobre a SAFRI" />
-                    <DropdownLink href="/empresa#missao" label="Missão, Visão e Valores" />
+                    <DropdownLink
+                      href="/empresa#missao"
+                      label="Missão, Visão e Valores"
+                    />
                     <DropdownLink href="/empresa#direcao" label="Direção" />
-                    <DropdownLink href="/empresa#infraestrutura" label="Infraestrutura" />
+                    <DropdownLink
+                      href="/empresa#infraestrutura"
+                      label="Infraestrutura"
+                    />
                   </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
-              {/* SETORES COM IMAGEM DINÂMICA */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Áreas de Atuação</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="h-10 px-4 text-[13px] font-semibold">
+                  Áreas de Atuação
+                </NavigationMenuTrigger>
 
                 <NavigationMenuContent>
-                  <div className="grid grid-cols-2 w-[820px]">
+                  <div className="overflow-hidden rounded-xl">
+                    <div className="grid w-[860px] grid-cols-[1.05fr_0.95fr]">
+                      <div className="space-y-1 p-5">
+                        {sectors.map((sector) => (
+                          <Link
+                            key={sector.title}
+                            href="/setores"
+                            onMouseEnter={() => setActiveImage(sector.image)}
+                            className="group block rounded-xl px-4 py-3 transition hover:bg-muted"
+                          >
+                            <h4 className="text-[14px] font-semibold leading-snug text-foreground transition group-hover:text-primary">
+                              {sector.title}
+                            </h4>
 
-                    {/* LEFT */}
-                    <div className="p-6 space-y-4">
-                      {sectors.map((sector, i) => (
-                        <div
-                          key={i}
-                          onMouseEnter={() => setActiveImage(sector.image)}
-                          className="cursor-pointer group"
-                        >
-                          <h4 className="font-semibold group-hover:text-primary transition">
-                            {sector.title}
-                          </h4>
-                          <p className="text-sm text-muted-foreground">
-                            {sector.desc}
-                          </p>
-                        </div>
-                      ))}
+                            <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
+                              {sector.desc}
+                            </p>
+                          </Link>
+                        ))}
+                      </div>
+
+                      <div className="relative min-h-[350px] overflow-hidden bg-muted">
+                        <Image
+                          src={activeImage}
+                          alt="Setor SAFRI"
+                          fill
+                          className="object-cover transition-all duration-500"
+                        />
+
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                      </div>
                     </div>
 
-                    {/* RIGHT IMAGE */}
-                    <div className="relative h-full min-h-[320px]">
-                      <Image
-                        src={activeImage}
-                        alt="Setor SAFRI"
-                        fill
-                        className="object-cover transition-all duration-500"
-                      />
-
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                    <div className="border-t border-border bg-card px-6 py-4">
+                      <Link
+                        href="/setores"
+                        className="inline-flex text-[13px] font-semibold text-primary transition hover:underline"
+                      >
+                        Ver todas as áreas →
+                      </Link>
                     </div>
-
-                  </div>
-
-                  <div className="border-t p-4">
-                    <Link
-                      href="/setores"
-                      className="text-primary font-semibold hover:underline"
-                    >
-                      Ver todas as áreas →
-                    </Link>
                   </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
@@ -147,81 +142,101 @@ export function Header() {
                 <NavLink href="/galeria">Galeria</NavLink>
               </NavigationMenuItem>
 
-              
+              <NavigationMenuItem>
+                <NavLink href="/visitantes">Visitantes</NavLink>
+              </NavigationMenuItem>
 
               <NavigationMenuItem>
                 <NavLink href="/contacto">Contacto</NavLink>
               </NavigationMenuItem>
-
             </NavigationMenuList>
           </NavigationMenu>
         </div>
 
-        {/* ACTIONS */}
-        <div className="flex items-center gap-3">
-
+        <div className="flex shrink-0 items-center gap-2">
           <ThemeToggle />
 
           <Link href="/loja" className="hidden md:block">
-            <Button className="rounded-full px-6 flex items-center gap-2">
-              <Store size={18} />
+            <Button className="h-10 rounded-full px-5 text-[13px] font-semibold">
+              <Store size={16} />
               Catálogo
             </Button>
           </Link>
 
-          {/* MOBILE BTN */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border lg:hidden"
+            aria-label="Abrir menu"
           >
-            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
-      {/* MOBILE */}
       {mobileOpen && (
-        <div className="lg:hidden border-t px-6 py-6 space-y-4">
-          <MobileLink href="/">Home</MobileLink>
-          <MobileLink href="/empresa">Empresa</MobileLink>
-          <MobileLink href="/setores">Áreas</MobileLink>
-          <MobileLink href="/galeria">Galeria</MobileLink>
+        <div className="border-t border-border bg-background px-4 py-5 sm:px-5 lg:hidden">
+          <nav className="flex w-full flex-col gap-1">
+            <MobileLink href="/">Home</MobileLink>
+            <MobileLink href="/empresa">Empresa</MobileLink>
+            <MobileLink href="/setores">Áreas de Atuação</MobileLink>
+            <MobileLink href="/galeria">Galeria</MobileLink>
+            <MobileLink href="/visitantes">Visitantes</MobileLink>
+            <MobileLink href="/contacto">Contacto</MobileLink>
 
-          <MobileLink href="/contacto">Contacto</MobileLink>
-          <MobileLink href="/loja" className="hidden md:block">
-            <Button className="rounded-full px-6 flex items-center gap-2">
-              <Store size={18} />
-              Catálogo
-            </Button>
-          </MobileLink>
+            <Link href="/loja" className="mt-4">
+              <Button className="h-11 w-full rounded-full text-sm font-semibold">
+                <Store size={17} />
+                Catálogo
+              </Button>
+            </Link>
+          </nav>
         </div>
       )}
     </header>
-  );
+  )
 }
 
-/* COMPONENTES */
-
-function NavLink({ href, children }: any) {
+function NavLink({
+  href,
+  children,
+}: {
+  href: string
+  children: React.ReactNode
+}) {
   return (
-    <Link href={href} className="text-sm font-medium hover:text-primary transition">
+    <Link
+      href={href}
+      className="inline-flex h-10 items-center rounded-full px-4 text-[13px] font-semibold text-foreground/85 transition hover:bg-muted hover:text-primary"
+    >
       {children}
     </Link>
-  );
+  )
 }
 
-function DropdownLink({ href, label }: any) {
+function DropdownLink({ href, label }: { href: string; label: string }) {
   return (
-    <Link href={href} className="block text-sm text-muted-foreground hover:text-primary transition">
+    <Link
+      href={href}
+      className="block rounded-lg px-3 py-2.5 text-[13px] font-medium leading-snug text-muted-foreground transition hover:bg-muted hover:text-primary"
+    >
       {label}
     </Link>
-  );
+  )
 }
 
-function MobileLink({ href, children }: any) {
+function MobileLink({
+  href,
+  children,
+}: {
+  href: string
+  children: React.ReactNode
+}) {
   return (
-    <Link href={href} className="block text-base font-medium">
+    <Link
+      href={href}
+      className="block rounded-xl px-4 py-3 text-[15px] font-semibold text-foreground transition hover:bg-muted hover:text-primary"
+    >
       {children}
     </Link>
-  );
+  )
 }
