@@ -14,7 +14,7 @@ export interface ProductSpec {
 
 export type ProductCategory =
   | "sacos"
-  | "sacolas"
+  | "saco"
   | "carteiras"
   | "cadernos"
 
@@ -149,7 +149,7 @@ export const products: Product[] = [
     id: "sacola-laminada-30kg",
     name: "Saco Laminado 30kg",
     slug: "sacola-laminada-30kg",
-    category: "sacolas",
+    category: "saco",
     images: [
       img("sacola1.png"),
       img("sacola2.png"),
@@ -169,7 +169,7 @@ export const products: Product[] = [
     id: "sacola-laminada-30kg",
     name: "Saco Laminado 30kg",
     slug: "sacola-laminada-30kg",
-    category: "sacolas",
+    category: "saco",
     images: [
       img("sacola1.png"),
       img("sacola2.png"),
@@ -189,7 +189,7 @@ export const products: Product[] = [
     id: "sacola-laminada-30kg",
     name: "Saco Laminado 30kg",
     slug: "sacola-laminada-30kg",
-    category: "sacolas",
+    category: "saco",
     images: [
       img("sacola1.png"),
       img("sacola2.png"),
@@ -209,7 +209,7 @@ export const products: Product[] = [
     id: "sacola-laminada-30kg",
     name: "Saco Laminado 30kg",
     slug: "sacola-laminada-30kg",
-    category: "sacolas",
+    category: "saco",
     images: [
       img("sacola1.png"),
       img("sacola2.png"),

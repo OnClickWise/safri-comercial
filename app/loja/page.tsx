@@ -11,7 +11,7 @@ export default function LojaPage() {
 
       <ProductSection title="Sacos Normais e Laminados" category="sacos" />
       
-      <ProductSection title="Sacos Normais" category="sacolas" />
+      <ProductSection title="Sacos Normais" category="saco" />
 
       <ProductSection title="Carteiras Escolares" category="carteiras" />
 
