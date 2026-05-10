@@ -9,7 +9,9 @@ export default function LojaPage() {
 
       <HeroCarousel />
 
-      <ProductSection title="Sacos Industriais" category="sacos" />
+      <ProductSection title="Sacos Normais e Laminados" category="sacos" />
+      
+      <ProductSection title="Sacos Normais" category="sacolas" />
 
       <ProductSection title="Carteiras Escolares" category="carteiras" />
 
