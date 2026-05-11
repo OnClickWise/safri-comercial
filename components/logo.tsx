@@ -25,8 +25,8 @@ export function Logo({ className }: { className?: string }) {
       <Image
         src={logoSrc}
         alt="Safri Comercial"
-        width={160}
-        height={20}
+        width={120}
+        height={12}
         priority
       />
     </div>
