@@ -22,7 +22,7 @@ export function AboutPreview() {
   )
 
   return (
-    <section className="w-full min-h-screen flex items-center py-16 lg:py-24">
+    <section className="w-full py-24 lg:py-32">
 
       <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
 
@@ -32,12 +32,15 @@ export function AboutPreview() {
           <div className="max-w-xl">
 
             {/* TAG */}
-            <div className="mb-6 inline-block bg-primary/10 border border-primary/20 text-primary px-4 py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wide">
-              SOBRE A SAFRI
+            <div className="mb-6 flex items-center gap-3">
+              <div className="h-px w-10 bg-primary" />
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                Sobre a SAFRI
+              </span>
             </div>
 
             {/* TITLE */}
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.08] tracking-tight">
+            <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.08] tracking-tight">
               Capacidade real para executar projetos de grande escala
             </h2>
 

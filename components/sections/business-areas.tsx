@@ -62,11 +62,15 @@ export function BusinessAreas() {
     <section className="relative w-full overflow-hidden bg-background py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-primary">
-            Sectores Estratégicos
-          </span>
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="h-px w-10 bg-primary" />
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+              Sectores Estratégicos
+            </span>
+            <div className="h-px w-10 bg-primary" />
+          </div>
 
-          <h2 className="mt-6 text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl lg:text-5xl">
+          <h2 className="font-heading mt-2 text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl lg:text-5xl">
             Estrutura Multissetorial com Capacidade Real de Execução
           </h2>
 
@@ -96,7 +100,7 @@ export function BusinessAreas() {
                     relative
                     block
                     h-full
-                    rounded-3xl
+                    rounded-xl
                     border
                     border-border
                     bg-card
@@ -107,7 +111,7 @@ export function BusinessAreas() {
                     hover:shadow-2xl
                   "
                 >
-                  <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/10 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
+                  <div className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-br from-primary/10 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
 
                   <div className="relative flex flex-col gap-5">
                     <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-transform duration-300 group-hover:scale-110">

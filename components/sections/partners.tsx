@@ -41,11 +41,15 @@ export function Partners() {
       <div className="container mx-auto px-4 sm:px-6">
         {/* HEADER */}
         <div className="text-center max-w-2xl mx-auto">
-          <span className="inline-block text-xs font-semibold uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full">
-            Parcerias Estratégicas
-          </span>
+          <div className="flex items-center justify-center gap-3">
+            <div className="h-px w-10 bg-primary" />
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+              Parcerias Estratégicas
+            </span>
+            <div className="h-px w-10 bg-primary" />
+          </div>
 
-          <h2 className="mt-5 text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
+          <h2 className="font-heading mt-5 text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
             Parceiros que Geram Valor
           </h2>
 
@@ -57,7 +61,10 @@ export function Partners() {
         </div>
 
         {/* CAROUSEL */}
-        <div className="mt-12 overflow-hidden" ref={emblaRef}>
+        <div className="mt-12 relative">
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-muted/30 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-muted/30 to-transparent z-10 pointer-events-none" />
+        <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex gap-10 items-center">
             {partners.map((partner, index) => (
               <motion.div
@@ -75,6 +82,7 @@ export function Partners() {
               </motion.div>
             ))}
           </div>
+        </div>
         </div>
       </div>
     </section>

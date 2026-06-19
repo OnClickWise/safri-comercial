@@ -2,140 +2,235 @@
 
 import * as React from "react";
 import useEmblaCarousel from "embla-carousel-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { MessageCircle } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+
+const AUTOPLAY_MS = 6500;
 
 const slides = [
   {
-    title: "SOLUÇÕES INDUSTRIAIS DE ALTA PERFORMANCE",
+    label: "Angola · 25 Anos de Operações",
+    title: ["Parceiro Estratégico", "para Grandes Operações"],
     subtitle:
-      "Fornecimento, produção e logística para empresas que operam em grande escala",
-    highlight: "Mais de 25 anos a executar projetos estratégicos em Angola",
+      "Infraestrutura própria, frota dedicada e equipa experiente para executar projetos exigentes com precisão e eficiência.",
     image: "/images/banner7.png",
+    position: "center",
   },
   {
-    title: "FORNECIMENTO INTELIGENTE PARA GRANDES OPERAÇÕES",
+    label: "Fornecimento · Nacional e Internacional",
+    title: ["Abastecimento Garantido", "para Quem Não Pode Parar"],
     subtitle:
-      "Garantimos stock, entrega e continuidade para empresas que não podem parar",
-    highlight: "Capacidade logística e comercial preparada para grandes volumes",
+      "Stock permanente, logística integrada e resposta comercial em 24 horas para contratos institucionais de grande volume.",
     image: "/images/banner2.png",
+    position: "center",
   },
   {
-    title: "LOGÍSTICA E TRANSPORTE EM LARGA ESCALA",
+    label: "Comércio · Logística · Indústria · Agro",
+    title: ["Estrutura Multissetorial", "com Execução Real"],
     subtitle:
-      "Movemos cargas, operações e negócios com eficiência e controlo total",
-    highlight: "Infraestrutura própria e frota preparada para grandes desafios",
-    image: "/images/banner3.png",
+      "Da importação à entrega final, controlamos todo o processo com eficiência, rigor e resultados mensuráveis.",
+    image: "/images/banner4.png",
+    position: "center",
   },
 ];
 
-export function Hero() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+const stats = [
+  { value: "+25", label: "Anos de Experiência" },
+  { value: "+10k m²", label: "Capacidade de Stock" },
+  { value: "+100", label: "Clientes Servidos" },
+  { value: "24h", label: "Resposta Comercial" },
+];
 
-      const whatsappNumber = "244922100548";
-      const proposalLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-      "Olá, gostaria de solicitar uma proposta da SAFRI.",
-    )}`;
- 
+export function Hero() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 50 });
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const [progressKey, setProgressKey] = React.useState(0);
+
+  const whatsappNumber = "244922100548";
+  const proposalLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    "Olá, gostaria de solicitar uma proposta da SAFRI.",
+  )}`;
 
   React.useEffect(() => {
     if (!emblaApi) return;
 
-    const autoplay = setInterval(() => {
-      emblaApi.scrollNext();
-    }, 6000);
+    emblaApi.on("select", () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap());
+      setProgressKey((k) => k + 1);
+    });
 
+    const autoplay = setInterval(() => emblaApi.scrollNext(), AUTOPLAY_MS);
     return () => clearInterval(autoplay);
   }, [emblaApi]);
 
+  const slide = slides[selectedIndex];
+
   return (
-    <section className="relative overflow-hidden">
-      <div ref={emblaRef} className="overflow-hidden">
-        <div className="flex">
-          {slides.map((slide, index) => (
+    <section className="relative overflow-hidden h-screen min-h-[640px] max-h-[1080px]">
+
+      {/* ─── BACKGROUND CAROUSEL ─────────────────────────────── */}
+      <div ref={emblaRef} className="absolute inset-0 overflow-hidden">
+        <div className="flex h-full">
+          {slides.map((s, i) => (
             <div
-              key={index}
-              className="relative min-w-full h-[90vh] flex items-center"
+              key={i}
+              className="relative min-w-full h-full flex-shrink-0"
             >
-              {/* IMAGE */}
               <div
-                className="absolute inset-0 bg-cover bg-center scale-105"
-                style={{ backgroundImage: `url(${slide.image})` }}
+                className="absolute inset-0 bg-cover bg-center"
+                style={{
+                  backgroundImage: `url(${s.image})`,
+                  backgroundPosition: s.position,
+                }}
               />
 
-              {/* OVERLAY */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/70 to-black/40" />
-
-              {/* CONTENT */}
-              <div className="relative w-full px-6 lg:px-16 xl:px-24">
-                <div className="max-w-5xl">
-
-                  {/* TAG / PROVA */}
-                  <div className="mb-6 inline-block bg-primary/10 border border-primary/20 text-primary px-4 py-2 rounded-full text-sm font-medium">
-                    {slide.highlight}
-                  </div>
-
-                  {/* TITLE */}
-                  <h1 className="text-4xl sm:text-4xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.05] text-white">
-                    {slide.title}
-                  </h1>
-
-                  {/* SUBTITLE */}
-                  <p className="mt-6 text-xl sm:text-2xl text-white/80 max-w-3xl">
-                    {slide.subtitle}
-                  </p>
-
-                  {/* STATS (PROVA SOCIAL) */}
-                  <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl">
-                    <Stat value="+25" label="Anos de Experiência" />
-                    <Stat value="+10k m²" label="Capacidade de Armazenamento" />
-                    <Stat value="+100" label="Clientes Atendidos" />
-                    <Stat value="24h" label="Resposta Comercial" />
-                  </div>
-
-                  {/* CTA */}
-                  <div className="mt-12 flex flex-col sm:flex-row gap-5">
-                    <a href={proposalLink} target="_blank">
-                      <Button className="px-10 py-7 text-lg font-semibold">
-                        Solicitar Proposta
-                      </Button>
-                    </a>
-
-                    <a
-                      href={`https://wa.me/${whatsappNumber}`}
-                      target="_blank"
-                    >
-                      <Button
-                        variant="outline"
-                        className="flex items-center gap-3 px-10 py-7 text-lg text-white border-white hover:bg-white hover:text-black"
-                      >
-                        <MessageCircle size={22} />
-                        Falar com Especialista
-                      </Button>
-                    </a>
-                  </div>
-
-                </div>
-              </div>
+              {/* dual gradient: left coverage + bottom vignette */}
+              <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/65 to-black/10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
             </div>
           ))}
         </div>
       </div>
+
+      {/* ─── LEFT ACCENT LINE ────────────────────────────────── */}
+      <div className="absolute left-0 inset-y-0 w-1 z-20 hidden lg:block">
+        <div className="absolute top-[20%] bottom-[20%] w-full bg-primary" />
+      </div>
+
+      {/* ─── DECORATIVE SLIDE NUMBER (top-right) ─────────────── */}
+      <div className="absolute top-10 right-8 lg:right-16 z-20 hidden xl:block select-none pointer-events-none">
+        <span className="font-heading text-[9rem] font-bold leading-none text-white/[0.05]">
+          {String(selectedIndex + 1).padStart(2, "0")}
+        </span>
+      </div>
+
+      {/* ─── MAIN CONTENT ────────────────────────────────────── */}
+      <div className="absolute inset-0 z-10 flex flex-col justify-center px-8 lg:px-16 xl:px-24 pb-32">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={selectedIndex}
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -14 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-4xl"
+          >
+            {/* LABEL */}
+            <div className="mb-8 flex items-center gap-4">
+              <div className="h-px w-8 bg-primary flex-shrink-0" />
+              <span className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/50">
+                {slide.label}
+              </span>
+            </div>
+
+            {/* TITLE */}
+            <h1 className="font-heading font-bold leading-[1.06] text-white">
+              <span className="block text-4xl sm:text-5xl lg:text-6xl xl:text-[5rem]">
+                {slide.title[0]}
+              </span>
+              <span className="block text-4xl sm:text-5xl lg:text-6xl xl:text-[5rem] text-white/75">
+                {slide.title[1]}
+              </span>
+            </h1>
+
+            {/* SUBTITLE */}
+            <p className="mt-7 text-[15px] sm:text-base text-white/55 max-w-[480px] leading-[1.75]">
+              {slide.subtitle}
+            </p>
+
+            {/* CTAs */}
+            <div className="mt-10 flex flex-wrap gap-4">
+              <a href={proposalLink} target="_blank" rel="noopener noreferrer">
+                <Button
+                  className="h-12 px-8 text-sm font-semibold rounded-none gap-2
+                             shadow-lg shadow-primary/20"
+                >
+                  Solicitar Proposta
+                  <ArrowRight size={15} />
+                </Button>
+              </a>
+
+              <a href="/empresa">
+                <Button
+                  variant="outline"
+                  className="h-12 px-8 text-sm rounded-none
+                             border-white/25 text-white
+                             hover:bg-white/10 hover:border-white/50 hover:text-white"
+                >
+                  Conhecer a Empresa
+                </Button>
+              </a>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* ─── SLIDE COUNTER + ARROWS (above stats bar) ────────── */}
+      <div className="absolute bottom-[88px] right-8 lg:right-16 z-20 flex items-center gap-4">
+        <button
+          onClick={() => emblaApi?.scrollPrev()}
+          aria-label="Anterior"
+          className="flex h-9 w-9 items-center justify-center
+                     border border-white/20 text-white/50
+                     hover:border-white/50 hover:text-white
+                     transition-all duration-200"
+        >
+          <ChevronLeft size={16} />
+        </button>
+
+        <span className="text-[11px] tabular-nums text-white/40 tracking-widest">
+          {String(selectedIndex + 1).padStart(2, "0")}
+          <span className="mx-2 text-white/20">/</span>
+          {String(slides.length).padStart(2, "0")}
+        </span>
+
+        <button
+          onClick={() => emblaApi?.scrollNext()}
+          aria-label="Próximo"
+          className="flex h-9 w-9 items-center justify-center
+                     border border-white/20 text-white/50
+                     hover:border-white/50 hover:text-white
+                     transition-all duration-200"
+        >
+          <ChevronRight size={16} />
+        </button>
+      </div>
+
+      {/* ─── STATS BAR ───────────────────────────────────────── */}
+      <div className="absolute bottom-0 left-0 right-0 z-20
+                      border-t border-white/10
+                      bg-black/40 backdrop-blur-md">
+        <div className="px-8 lg:px-16 xl:px-24">
+          <div className="flex items-stretch divide-x divide-white/10">
+            {stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="flex-1 py-5 px-4 first:pl-0 last:pr-0"
+              >
+                <div className="text-lg sm:text-xl font-bold text-white">
+                  {stat.value}
+                </div>
+                <div className="text-[10px] uppercase tracking-widest text-white/35 mt-[3px]">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ─── PROGRESS BAR ────────────────────────────────────── */}
+      <div className="absolute bottom-0 left-0 right-0 h-[2px] z-30 bg-white/5">
+        <motion.div
+          key={progressKey}
+          initial={{ width: "0%" }}
+          animate={{ width: "100%" }}
+          transition={{ duration: AUTOPLAY_MS / 1000, ease: "linear" }}
+          className="h-full bg-primary"
+        />
+      </div>
+
     </section>
-  );
-}
-
-/* COMPONENTE DE ESTATÍSTICA */
-
-function Stat({ value, label }: any) {
-  return (
-    <div className="flex flex-col">
-      <span className="text-2xl sm:text-3xl font-bold text-white">
-        {value}
-      </span>
-      <span className="text-sm text-white/70">
-        {label}
-      </span>
-    </div>
   );
 }

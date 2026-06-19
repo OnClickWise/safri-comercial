@@ -64,11 +64,15 @@ export function Differentiators() {
 
         {/* HEADER */}
         <div className="text-center max-w-2xl mx-auto">
-          <span className="inline-block text-xs font-semibold uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full">
-            Diferenciais SAFRI
-          </span>
+          <div className="flex items-center justify-center gap-3">
+            <div className="h-px w-10 bg-primary" />
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+              Diferenciais SAFRI
+            </span>
+            <div className="h-px w-10 bg-primary" />
+          </div>
 
-          <h2 className="mt-5 text-2xl sm:text-3xl md:text-4xl font-bold">
+          <h2 className="font-heading mt-5 text-2xl sm:text-3xl md:text-4xl font-bold">
             Porquê Escolher a SAFRI
           </h2>
 
@@ -96,7 +100,7 @@ export function Differentiators() {
                     delay: index * 0.08,
                   }}
                   viewport={{ once: true }}
-                  className="group rounded-2xl border bg-card p-6 sm:p-7
+                  className="group rounded-xl border bg-card p-6 sm:p-7
                              hover:shadow-xl hover:-translate-y-1
                              transition-all duration-300"
                 >
