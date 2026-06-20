@@ -68,7 +68,7 @@ export default function TopBar() {
           <div className="flex items-center gap-4">
 
             <Link
-              href="https://linkedin.com"
+              href="https://linkedin.com/company/safri-comercial"
               target="_blank"
               className="text-white/40 hover:text-white transition-colors"
             >

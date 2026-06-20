@@ -50,7 +50,7 @@ export function Footer() {
                 <Instagram size={16} />
               </SocialIcon>
 
-              <SocialIcon href="https://linkedin.com">
+              <SocialIcon href="https://linkedin.com/company/safri-comercial">
                 <Linkedin size={16} />
               </SocialIcon>
             </div>
