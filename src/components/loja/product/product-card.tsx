@@ -1,7 +1,8 @@
 "use client"
+import { useState } from "react"
+import Image from "next/image"
 import Link from "next/link"
-import { MessageCircle, ShoppingCart } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
+import { Heart, MessageCircle, ZoomIn, ShoppingCart } from "lucide-react"
 import { useCartStore } from "@/store/cart-store"
 import { buildProductQuoteMessage, buildWhatsAppLink } from "@/lib/utils"
 import { CONTACTS } from "@/lib/constants"
@@ -14,7 +15,14 @@ const categoryLabels: Record<string, string> = {
   cadernos: "Cadernos Escolares",
 }
 
-export function ProductCard({ product }: { product: Product }) {
+interface ProductCardProps {
+  product: Product
+  badge?: string
+  imageSrc?: string
+}
+
+export function ProductCard({ product, badge, imageSrc }: ProductCardProps) {
+  const [imgError, setImgError] = useState(false)
   const addItem = useCartStore((s) => s.addItem)
 
   const whatsappLink = buildWhatsAppLink(
@@ -22,78 +30,92 @@ export function ProductCard({ product }: { product: Product }) {
     CONTACTS.whatsappCommercialRaw
   )
 
-  const handleAddToQuote = () => {
+  const handleAddToQuote = (e: React.MouseEvent) => {
+    e.preventDefault()
     addItem({ id: product.id, name: product.name })
   }
 
+  const src = imageSrc ?? product.images[0]
+  const showImage = src && !imgError
+
   return (
-    <div className="group relative rounded-2xl border border-border bg-card overflow-hidden hover:shadow-2xl hover:z-30 hover:border-primary/30 transition-all duration-300">
-      {/* Image */}
-      <div className="relative h-48 overflow-hidden bg-muted">
-        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-secondary/5 to-secondary/10 group-hover:scale-105 transition-transform duration-500">
-          <div className="text-center">
-            <div className="text-4xl font-black text-secondary/10 uppercase leading-none">{product.name.charAt(0)}</div>
-          </div>
+    <div className="group relative bg-card rounded-xl border border-border overflow-hidden hover:shadow-xl hover:border-primary/30 transition-all duration-300">
+      {/* Badge */}
+      {badge && (
+        <div className="absolute top-3 left-3 z-10">
+          <span className="rounded-full bg-primary text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1">
+            {badge}
+          </span>
         </div>
-        <div className="absolute top-3 left-3">
-          <Badge className="bg-primary text-white text-[10px] uppercase tracking-wide">
-            {categoryLabels[product.category] ?? product.category}
-          </Badge>
+      )}
+
+      {/* Image */}
+      <div className="relative h-48 bg-muted overflow-hidden">
+        {showImage ? (
+          <Image
+            src={src}
+            alt={product.name}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-secondary/5 to-secondary/15">
+            <span className="text-5xl font-black text-secondary/10 uppercase">
+              {product.name.charAt(0)}
+            </span>
+          </div>
+        )}
+
+        {/* Hover overlay */}
+        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">
+          <button
+            onClick={handleAddToQuote}
+            title="Adicionar à lista"
+            className="h-9 w-9 rounded-full bg-white text-foreground flex items-center justify-center hover:bg-primary hover:text-white transition-all shadow-md"
+          >
+            <Heart className="h-4 w-4" />
+          </button>
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Cotar pelo WhatsApp"
+            className="h-9 w-9 rounded-full bg-white text-foreground flex items-center justify-center hover:bg-primary hover:text-white transition-all shadow-md"
+          >
+            <MessageCircle className="h-4 w-4" />
+          </a>
+          <Link
+            href={`/loja/produto/${product.slug}`}
+            title="Ver detalhes"
+            className="h-9 w-9 rounded-full bg-white text-foreground flex items-center justify-center hover:bg-primary hover:text-white transition-all shadow-md"
+          >
+            <ZoomIn className="h-4 w-4" />
+          </Link>
         </div>
       </div>
 
       {/* Content */}
       <div className="p-4">
+        <span className="text-[10px] uppercase font-semibold tracking-wider text-muted-foreground">
+          {categoryLabels[product.category] ?? product.category}
+        </span>
         <Link href={`/loja/produto/${product.slug}`}>
-          <h3 className="font-semibold text-foreground hover:text-primary transition-colors line-clamp-1 mb-1">
+          <h3 className="font-bold text-sm text-foreground hover:text-primary transition-colors line-clamp-2 mt-0.5 mb-3 leading-snug">
             {product.name}
           </h3>
         </Link>
-        <p className="text-xs text-muted-foreground line-clamp-2 mb-4 leading-relaxed">
-          {product.description}
-        </p>
 
-        {/* Variants preview */}
-        {product.variants && product.variants.length > 0 && (
-          <div className="flex flex-wrap gap-1 mb-4">
-            {product.variants.slice(0, 3).map((v, i) => (
-              <span key={i} className="rounded-full border border-border px-2 py-0.5 text-[10px] text-muted-foreground">
-                {v.value}
-              </span>
-            ))}
-            {product.variants.length > 3 && (
-              <span className="rounded-full border border-border px-2 py-0.5 text-[10px] text-muted-foreground">
-                +{product.variants.length - 3}
-              </span>
-            )}
-          </div>
-        )}
-
-        <div className="flex gap-2">
-          <Link
-            href={`/loja/produto/${product.slug}`}
-            className="flex-1 rounded-full border-2 border-secondary text-secondary text-xs font-semibold py-2 text-center hover:bg-secondary hover:text-white transition-all"
-          >
-            Ver Detalhes
-          </Link>
-          <a
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 rounded-full bg-primary text-white text-xs font-semibold py-2 text-center hover:bg-primary/90 transition-all flex items-center justify-center gap-1"
-          >
-            <MessageCircle className="h-3 w-3" />
-            Cotar
-          </a>
-        </div>
-
-        <button
-          onClick={handleAddToQuote}
-          className="mt-2 w-full flex items-center justify-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors py-1"
+        <a
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-1.5 w-full rounded-full bg-primary text-white text-xs font-bold py-2.5 hover:bg-primary/90 transition-all"
         >
-          <ShoppingCart className="h-3 w-3" />
-          Adicionar à lista de cotação
-        </button>
+          <ShoppingCart className="h-3.5 w-3.5" />
+          Solicitar Cotação
+        </a>
       </div>
     </div>
   )
