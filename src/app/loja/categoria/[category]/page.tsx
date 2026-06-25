@@ -1,27 +1,53 @@
 import { notFound } from "next/navigation"
-import { products, PRODUCT_CATEGORIES, getProductsByCategory } from "@/lib/products"
-import { ProductCard } from "@/components/loja/product/product-card"
-import { PageHero } from "@/components/shared/page-hero"
+import type { Metadata } from "next"
+import { PRODUCT_CATEGORIES, getProductsByCategory } from "@/lib/products"
+import { CategoryGridClient } from "@/components/loja/shop/category-grid-client"
 
 export function generateStaticParams() {
   return PRODUCT_CATEGORIES.map((c) => ({ category: c.id }))
 }
 
-export default async function CategoriaPage({ params }: { params: Promise<{ category: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ category: string }>
+}): Promise<Metadata> {
+  const { category } = await params
+  const cat = PRODUCT_CATEGORIES.find((c) => c.id === category)
+  if (!cat) return {}
+  const count = getProductsByCategory(category).length
+  return {
+    title: `${cat.label} — SAFRI Catálogo`,
+    description: `${count} produtos disponíveis em ${cat.label}. Solicite cotação directamente pelo WhatsApp.`,
+  }
+}
+
+export default async function CategoriaPage({
+  params,
+}: {
+  params: Promise<{ category: string }>
+}) {
   const { category } = await params
   const cat = PRODUCT_CATEGORIES.find((c) => c.id === category)
   if (!cat) notFound()
 
-  const filtered = getProductsByCategory(category)
-
   return (
     <>
-      <PageHero title={cat.label} description={`${filtered.length} produtos disponíveis nesta categoria.`} />
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-          {filtered.map((p) => <ProductCard key={p.id} product={p} />)}
+      {/* Breadcrumb hero — shopingo style */}
+      <div className="py-4 border-b border-border bg-muted/30">
+        <div className="container mx-auto px-4">
+          <nav className="flex items-center gap-2 text-xs text-muted-foreground">
+            <a href="/" className="hover:text-primary transition-colors">Início</a>
+            <span>/</span>
+            <a href="/loja" className="hover:text-primary transition-colors">Catálogo</a>
+            <span>/</span>
+            <span className="text-foreground font-semibold">{cat.label}</span>
+          </nav>
+          <h1 className="text-xl font-black text-secondary mt-2">{cat.label}</h1>
         </div>
       </div>
+
+      <CategoryGridClient category={category} />
     </>
   )
 }
