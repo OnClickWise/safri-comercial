@@ -37,21 +37,21 @@ export const HERO_SLIDES = [
     title: "SOLUÇÕES INDUSTRIAIS DE ALTA PERFORMANCE",
     subtitle: "Fornecimento, produção e logística para empresas que operam em grande escala",
     highlight: "Mais de 25 anos a executar projetos estratégicos em Angola",
-    image: "/images/hero/slide-1.jpg",
+    image: "/images/loja/sliders/s_0.webp",
   },
   {
     id: 2,
     title: "FORNECIMENTO INTELIGENTE PARA GRANDES OPERAÇÕES",
     subtitle: "Garantimos stock, entrega e continuidade para empresas que não podem parar",
     highlight: "Capacidade logística e comercial preparada para grandes volumes",
-    image: "/images/hero/slide-2.jpg",
+    image: "/images/loja/sliders/s_1.webp",
   },
   {
     id: 3,
     title: "LOGÍSTICA E TRANSPORTE EM LARGA ESCALA",
     subtitle: "Movemos cargas, operações e negócios com eficiência e controlo total",
     highlight: "Infraestrutura própria e frota preparada para grandes desafios",
-    image: "/images/hero/slide-3.jpg",
+    image: "/images/loja/sliders/s_2.webp",
   },
 ] as const
 
@@ -78,7 +78,7 @@ export const SECTORS = [
       "Participação em programas governamentais (Comércio Rural Permanente)",
     ],
     icon: "ShoppingBag",
-    image: "/images/setores/comercio.jpg",
+    image: "/images/loja/categories/01.webp",
   },
   {
     id: "transportes",
@@ -95,7 +95,7 @@ export const SECTORS = [
       "Autocarros para transporte e turismo",
     ],
     icon: "Truck",
-    image: "/images/setores/transportes.jpg",
+    image: "/images/loja/categories/02.webp",
   },
   {
     id: "industria",
@@ -112,7 +112,7 @@ export const SECTORS = [
       "Projeto em curso de fábrica de sacos de ráfia",
     ],
     icon: "Factory",
-    image: "/images/setores/industria.jpg",
+    image: "/images/loja/categories/03.webp",
   },
   {
     id: "hotelaria",
@@ -128,7 +128,7 @@ export const SECTORS = [
       "Projeto turístico único na região do Bié",
     ],
     icon: "Hotel",
-    image: "/images/setores/hotelaria.jpg",
+    image: "/images/loja/categories/04.webp",
   },
   {
     id: "importacao",
@@ -145,7 +145,7 @@ export const SECTORS = [
       "Capacidade de entrega em menos de 10 dias",
     ],
     icon: "Globe",
-    image: "/images/setores/importacao.jpg",
+    image: "/images/loja/categories/05.webp",
   },
   {
     id: "educacao",
@@ -163,7 +163,7 @@ export const SECTORS = [
     ],
     icon: "GraduationCap",
     externalLink: "https://www.ispndunduma.co.ao/",
-    image: "/images/setores/educacao.jpg",
+    image: "/images/loja/categories/06.webp",
   },
   {
     id: "agro",
@@ -180,7 +180,7 @@ export const SECTORS = [
       "Integração com ensino superior (agronomia)",
     ],
     icon: "Sprout",
-    image: "/images/setores/agro.jpg",
+    image: "/images/loja/featured-products/01.webp",
   },
 ] as const
 

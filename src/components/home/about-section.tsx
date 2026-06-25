@@ -61,12 +61,18 @@ export function AboutSection() {
 
           {/* Image */}
           <div className="relative">
-            <div className="relative h-[500px] rounded-2xl overflow-hidden bg-muted">
-              <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 to-secondary/5 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="text-6xl font-black text-secondary/20 mb-2">SAFRI</div>
-                  <div className="text-secondary/30 text-sm">Imagem corporativa</div>
-                </div>
+            <div className="relative h-[500px] rounded-2xl overflow-hidden bg-muted shadow-2xl">
+              <Image
+                src="/images/director.png"
+                alt="Director SAFRI — Gonçalves Cassoma"
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-secondary/60 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4">
+                <p className="text-white font-bold text-sm">{COMPANY.ceo}</p>
+                <p className="text-white/70 text-xs">Fundador & Director-Geral</p>
               </div>
             </div>
             {/* Badge */}
