@@ -25,10 +25,10 @@ export function PromoBanner() {
           {/* Image */}
           <div className="relative h-64 lg:h-auto min-h-[320px] bg-secondary">
             <Image
-              src="/images/loja/extra-images/promo-large.webp"
+              src="/images/Produtos/Cama-beliche -uni.png"
               alt="SAFRI-METAL — Produção Nacional"
               fill
-              className="object-cover"
+              className="object-contain p-6"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
             <div className="absolute inset-0 bg-secondary/40" />
@@ -69,7 +69,7 @@ export function PromoBanner() {
                 Solicitar pelo WhatsApp
               </a>
               <Link
-                href="/loja/categoria/carteiras"
+                href="/loja/categoria/mobiliario"
                 className="inline-flex items-center gap-2 rounded-full border-2 border-secondary text-secondary px-6 py-3 text-sm font-bold hover:bg-secondary hover:text-white transition-all"
               >
                 Ver Produtos

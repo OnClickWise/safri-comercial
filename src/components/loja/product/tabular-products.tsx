@@ -8,35 +8,13 @@ const tabs = [
   { id: "saco", label: "Sacos 30kg" },
   { id: "carteiras", label: "Carteiras Escolares" },
   { id: "cadernos", label: "Cadernos Escolares" },
+  { id: "mobiliario", label: "Mobiliário e Camas" },
 ] as const
-
-const tabImages: Record<string, string[]> = {
-  sacos: [
-    "/images/loja/new-arrival/01.webp",
-    "/images/loja/new-arrival/02.webp",
-    "/images/loja/new-arrival/03.webp",
-    "/images/loja/new-arrival/04.webp",
-  ],
-  saco: ["/images/loja/new-arrival/05.webp"],
-  carteiras: [
-    "/images/loja/new-arrival/06.webp",
-    "/images/loja/new-arrival/07.webp",
-    "/images/loja/new-arrival/08.webp",
-    "/images/loja/new-arrival/09.webp",
-  ],
-  cadernos: [
-    "/images/loja/new-arrival/10.webp",
-    "/images/loja/new-arrival/01.webp",
-    "/images/loja/new-arrival/02.webp",
-    "/images/loja/new-arrival/03.webp",
-  ],
-}
 
 export function TabularProducts() {
   const [activeTab, setActiveTab] = useState<string>("sacos")
 
   const productsInTab = getProductsByCategory(activeTab)
-  const images = tabImages[activeTab] ?? []
 
   return (
     <section className="py-14">
@@ -66,12 +44,8 @@ export function TabularProducts() {
 
         {/* Product Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-          {productsInTab.map((product, i) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              imageSrc={images[i]}
-            />
+          {productsInTab.map((product) => (
+            <ProductCard key={product.id} product={product} />
           ))}
           {productsInTab.length === 0 && (
             <div className="col-span-5 text-center py-16 text-muted-foreground">

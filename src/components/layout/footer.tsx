@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import { Phone, MessageCircle, Mail, MapPin, ExternalLink } from "lucide-react"
 import { COMPANY, CONTACTS, SOCIAL, SECTORS } from "@/lib/constants"
@@ -9,12 +10,14 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Col 1 — Empresa */}
           <div>
-            <Link href="/" className="flex flex-col leading-none mb-4">
-              <span className="text-2xl font-black tracking-tight">
-                <span className="text-primary">S</span>
-                <span className="text-white">AFRI</span>
-              </span>
-              <span className="text-[10px] font-medium text-white/50 uppercase tracking-wider">Comercial, Lda.</span>
+            <Link href="/" className="block mb-4">
+              <Image
+                src="/images/logo.png"
+                alt="SAFRI Comercial, Lda."
+                width={280}
+                height={135}
+                className="h-16 w-auto"
+              />
             </Link>
             <p className="text-sm text-white/60 leading-relaxed mb-4">
               {COMPANY.description}
@@ -42,10 +45,8 @@ export function Footer() {
                 { label: "Empresa", href: "/empresa" },
                 { label: "Áreas de Atuação", href: "/setores" },
                 { label: "Galeria", href: "/galeria" },
-                { label: "Visitantes", href: "/visitantes" },
                 { label: "Projectos", href: "/projetos" },
-                { label: "Contacto", href: "/contacto" },
-                { label: "Catálogo", href: "/loja" },
+                { label: "Contactos", href: "/contacto" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-sm text-white/60 hover:text-primary transition-colors">

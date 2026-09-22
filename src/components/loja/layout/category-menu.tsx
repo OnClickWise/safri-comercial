@@ -1,5 +1,7 @@
 "use client"
 import { useCallback } from "react"
+import Image from "next/image"
+import Link from "next/link"
 import useEmblaCarousel from "embla-carousel-react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { PRODUCT_CATEGORIES } from "@/lib/products"
@@ -13,8 +15,10 @@ export function CategoryMenu() {
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi])
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi])
 
+  const displayCategories = PRODUCT_CATEGORIES.filter((c) => c.id !== "todos")
+
   return (
-    <div className="relative bg-card border-b border-border py-5">
+    <div className="relative bg-card border-b border-border py-7">
       <div className="container mx-auto px-4">
         <div className="relative">
           <button
@@ -26,30 +30,35 @@ export function CategoryMenu() {
           </button>
 
           <div className="overflow-hidden px-6" ref={emblaRef}>
-            <div className="flex gap-4">
-              {PRODUCT_CATEGORIES.map((cat) => (
-                <button
+            <div className="flex gap-6 justify-center flex-wrap md:flex-nowrap">
+              {displayCategories.map((cat) => (
+                <Link
                   key={cat.id}
+                  href={`/loja/categoria/${cat.id}`}
                   onClick={() => setCategory(cat.id)}
-                  className="flex flex-col items-center gap-2 shrink-0 group"
+                  className="flex flex-col items-center gap-2.5 shrink-0 group"
                 >
                   <div className={cn(
-                    "h-16 w-16 rounded-full border-2 transition-all overflow-hidden bg-muted flex items-center justify-center",
+                    "relative h-16 w-16 rounded-full border-2 transition-all overflow-hidden bg-muted",
                     category === cat.id
                       ? "border-primary shadow-lg shadow-primary/20"
                       : "border-border group-hover:border-primary/40"
                   )}>
-                    <span className="text-[10px] text-muted-foreground font-bold text-center px-1 leading-tight">
-                      {cat.label.split(" ").slice(-1)[0]}
-                    </span>
+                    <Image
+                      src={cat.image}
+                      alt={cat.label}
+                      fill
+                      className="object-contain p-1.5"
+                      sizes="64px"
+                    />
                   </div>
                   <span className={cn(
-                    "text-xs font-medium text-center max-w-[80px] leading-tight",
+                    "text-xs font-medium text-center max-w-[90px] leading-tight",
                     category === cat.id ? "text-primary" : "text-muted-foreground group-hover:text-primary"
                   )}>
                     {cat.label}
                   </span>
-                </button>
+                </Link>
               ))}
             </div>
           </div>

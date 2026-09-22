@@ -15,32 +15,15 @@ const categoryLabels: Record<string, string> = {
   saco: "Sacos 30kg",
   carteiras: "Carteiras Escolares",
   cadernos: "Cadernos Escolares",
+  mobiliario: "Mobiliário e Camas",
 }
-
-const GALLERY = [
-  "/images/loja/product-images/01.jpg",
-  "/images/loja/product-images/02.jpg",
-  "/images/loja/product-images/03.jpg",
-  "/images/loja/product-images/04.jpg",
-  "/images/loja/product-images/05.jpg",
-  "/images/loja/product-images/06.jpg",
-  "/images/loja/product-images/07.jpg",
-  "/images/loja/product-images/08.jpg",
-]
-
-const RELATED_IMAGES = [
-  "/images/loja/new-arrival/01.webp",
-  "/images/loja/new-arrival/02.webp",
-  "/images/loja/new-arrival/03.webp",
-  "/images/loja/new-arrival/04.webp",
-  "/images/loja/new-arrival/05.webp",
-]
 
 export function ProductDetailClient({ product }: { product: Product }) {
   const [selectedVariant, setSelectedVariant] = useState<string | undefined>(
     product.variants?.[0]?.value
   )
   const [mainIdx, setMainIdx] = useState(0)
+  const gallery = product.images.length > 0 ? product.images : ["/images/loja/product-images/01.jpg"]
   const [added, setAdded] = useState(false)
   const addItem = useCartStore((s) => s.addItem)
 
@@ -92,38 +75,40 @@ export function ProductDetailClient({ product }: { product: Product }) {
               {/* Main image */}
               <div className="relative h-[340px] md:h-[460px] rounded-2xl overflow-hidden bg-muted mb-3 group cursor-zoom-in">
                 <Image
-                  src={GALLERY[mainIdx]}
+                  src={gallery[mainIdx]}
                   alt={`${product.name} — imagem ${mainIdx + 1}`}
                   fill
                   priority
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 1024px) 100vw, 58vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
 
-              {/* 2×4 thumbnail grid */}
-              <div className="grid grid-cols-4 gap-2">
-                {GALLERY.map((img, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setMainIdx(i)}
-                    className={`relative h-20 rounded-xl overflow-hidden border-2 transition-all duration-200 ${
-                      mainIdx === i
-                        ? "border-primary shadow-md shadow-primary/20"
-                        : "border-border hover:border-primary/50"
-                    }`}
-                  >
-                    <Image
-                      src={img}
-                      alt={`Imagem ${i + 1}`}
-                      fill
-                      className={`object-cover transition-opacity duration-200 ${mainIdx === i ? "opacity-100" : "opacity-70 hover:opacity-100"}`}
-                      sizes="100px"
-                    />
-                  </button>
-                ))}
-              </div>
+              {/* Thumbnail grid */}
+              {gallery.length > 1 && (
+                <div className="grid grid-cols-4 gap-2">
+                  {gallery.map((img, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setMainIdx(i)}
+                      className={`relative h-20 rounded-xl overflow-hidden border-2 transition-all duration-200 ${
+                        mainIdx === i
+                          ? "border-primary shadow-md shadow-primary/20"
+                          : "border-border hover:border-primary/50"
+                      }`}
+                    >
+                      <Image
+                        src={img}
+                        alt={`Imagem ${i + 1}`}
+                        fill
+                        className={`object-cover transition-opacity duration-200 ${mainIdx === i ? "opacity-100" : "opacity-70 hover:opacity-100"}`}
+                        sizes="100px"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Right col: product info */}
@@ -256,12 +241,8 @@ export function ProductDetailClient({ product }: { product: Product }) {
               <div className="flex-1 h-px bg-border" />
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-              {relatedProducts.map((p, i) => (
-                <ProductCard
-                  key={p.id}
-                  product={p}
-                  imageSrc={RELATED_IMAGES[i % RELATED_IMAGES.length]}
-                />
+              {relatedProducts.map((p) => (
+                <ProductCard key={p.id} product={p} />
               ))}
             </div>
           </div>

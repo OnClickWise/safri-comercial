@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { createPortal } from "react-dom"
 import Image from "next/image"
 import Link from "next/link"
-import { Heart, MessageCircle, ZoomIn, ShoppingCart, X, Star } from "lucide-react"
+import { Heart, MessageCircle, ZoomIn, ShoppingCart, X } from "lucide-react"
 import { useCartStore } from "@/store/cart-store"
 import { buildProductQuoteMessage, buildWhatsAppLink } from "@/lib/utils"
 import { CONTACTS } from "@/lib/constants"
@@ -14,14 +14,8 @@ const categoryLabels: Record<string, string> = {
   saco: "Sacos 30kg",
   carteiras: "Carteiras Escolares",
   cadernos: "Cadernos Escolares",
+  mobiliario: "Mobiliário e Camas",
 }
-
-const GALLERY = [
-  "/images/loja/product-images/01.jpg",
-  "/images/loja/product-images/02.jpg",
-  "/images/loja/product-images/03.jpg",
-  "/images/loja/product-images/04.jpg",
-]
 
 interface ProductCardProps {
   product: Product
@@ -56,6 +50,8 @@ function QuickViewModal({
     ? [...new Set(product.variants.map((v) => v.value))]
     : []
 
+  const gallery = product.images.length > 0 ? product.images : ["/images/loja/product-images/01.jpg"]
+
   // lock body scroll
   useEffect(() => {
     document.body.style.overflow = "hidden"
@@ -83,26 +79,28 @@ function QuickViewModal({
           <div className="p-6 bg-gray-50 dark:bg-neutral-800 rounded-tl-2xl rounded-bl-2xl">
             <div className="relative h-64 md:h-72 rounded-xl overflow-hidden bg-gray-100 dark:bg-neutral-700 mb-3">
               <Image
-                src={GALLERY[thumbIdx]}
+                src={gallery[thumbIdx]}
                 alt={product.name}
                 fill
-                className="object-cover"
+                className="object-contain"
                 sizes="400px"
               />
             </div>
-            <div className="flex gap-2">
-              {GALLERY.map((img, i) => (
-                <button
-                  key={i}
-                  onClick={() => setThumbIdx(i)}
-                  className={`relative h-14 w-14 flex-shrink-0 rounded-lg overflow-hidden border-2 transition-all ${
-                    thumbIdx === i ? "border-[#E21B23]" : "border-gray-200 opacity-60 hover:opacity-100"
-                  }`}
-                >
-                  <Image src={img} alt={`thumb ${i + 1}`} fill className="object-cover" sizes="56px" />
-                </button>
-              ))}
-            </div>
+            {gallery.length > 1 && (
+              <div className="flex gap-2">
+                {gallery.map((img, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setThumbIdx(i)}
+                    className={`relative h-14 w-14 flex-shrink-0 rounded-lg overflow-hidden border-2 transition-all ${
+                      thumbIdx === i ? "border-[#E21B23]" : "border-gray-200 opacity-60 hover:opacity-100"
+                    }`}
+                  >
+                    <Image src={img} alt={`thumb ${i + 1}`} fill className="object-cover" sizes="56px" />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Right: info */}
@@ -205,7 +203,7 @@ export function ProductCard({ product, badge, imageSrc }: ProductCardProps) {
     addItem({ id: product.id, name: product.name })
   }
 
-  const src = imageSrc ?? GALLERY[0]
+  const src = imageSrc ?? product.images[0]
   const showImage = src && !imgError
 
   return (
@@ -227,7 +225,7 @@ export function ProductCard({ product, badge, imageSrc }: ProductCardProps) {
                 src={src}
                 alt={product.name}
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                className="object-contain p-3 group-hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
                 onError={() => setImgError(true)}
               />
@@ -275,15 +273,10 @@ export function ProductCard({ product, badge, imageSrc }: ProductCardProps) {
             {categoryLabels[product.category] ?? product.category}
           </span>
           <Link href={`/loja/produto/${product.slug}`}>
-            <h3 className="font-bold text-sm text-foreground hover:text-primary transition-colors line-clamp-2 mt-0.5 mb-1.5 leading-snug">
+            <h3 className="font-bold text-sm text-foreground hover:text-primary transition-colors line-clamp-2 mt-0.5 mb-3 leading-snug">
               {product.name}
             </h3>
           </Link>
-          <div className="flex items-center justify-center gap-0.5 mb-3">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="h-3 w-3 fill-amber-400 text-amber-400" />
-            ))}
-          </div>
           <a
             href={whatsappLink}
             target="_blank"

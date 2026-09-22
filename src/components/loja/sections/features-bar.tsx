@@ -1,45 +1,52 @@
-import { Truck, Award, Clock, MessageCircle } from "lucide-react"
+import { Award, ShieldCheck, Truck, CreditCard, Headset } from "lucide-react"
+import { COMPANY } from "@/lib/constants"
 
 const features = [
   {
-    icon: Truck,
-    title: "Entrega Rápida",
-    description: "Logística própria para entregas em todo o país",
-    borderColor: "border-b-primary",
-  },
-  {
     icon: Award,
+    title: `Mais de ${COMPANY.experienceYears.replace("+", "")} Anos`,
+    description: "De experiência no mercado angolano",
+  },
+  {
+    icon: ShieldCheck,
     title: "Qualidade Garantida",
-    description: "Produção nacional com controlo de qualidade rigoroso",
-    borderColor: "border-b-[#1e3a5f]",
+    description: "Produção nacional com controlo rigoroso",
   },
   {
-    icon: Clock,
-    title: "Cotação em 24h",
-    description: "Respondemos a todos os pedidos em menos de 24 horas",
-    borderColor: "border-b-green-500",
+    icon: Truck,
+    title: "Entrega em Todo o País",
+    description: "Logística própria e parceiros locais",
   },
   {
-    icon: MessageCircle,
-    title: "Suporte Direto",
-    description: "Equipa comercial disponível via WhatsApp e telefone",
-    borderColor: "border-b-yellow-500",
+    icon: CreditCard,
+    title: "Pagamento Seguro",
+    description: "Várias formas de pagamento disponíveis",
+  },
+  {
+    icon: Headset,
+    title: "Atendimento Especializado",
+    description: "Suporte dedicado a escolas e empresas",
   },
 ]
 
 export function FeaturesBar() {
   return (
-    <section className="py-12 bg-card border-y border-border">
+    <section className="py-14 bg-card border-y border-border">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="text-center mb-10">
+          <h2 className="text-2xl md:text-3xl font-black text-secondary">
+            Porque Escolher a <span className="text-primary">SAFRI</span>?
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {features.map((f) => {
             const Icon = f.icon
             return (
               <div
                 key={f.title}
-                className={`flex gap-4 items-start p-5 rounded-xl bg-background border-b-4 shadow-sm hover:shadow-md transition-shadow ${f.borderColor}`}
+                className="flex flex-col items-center text-center gap-3 p-5 rounded-xl bg-background border border-border shadow-sm hover:shadow-md hover:border-primary/30 transition-all"
               >
-                <div className="shrink-0 h-11 w-11 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                <div className="shrink-0 h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                   <Icon className="h-5 w-5" />
                 </div>
                 <div>

@@ -1,11 +1,12 @@
 "use client"
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, X, ChevronDown, Phone, Mail } from "lucide-react"
+import { Menu, X, ChevronDown, Phone, Mail, MapPin, ExternalLink } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { cn } from "@/lib/utils"
-import { NAV_ITEMS, CONTACTS, SOCIAL, COMPANY } from "@/lib/constants"
+import { NAV_ITEMS, CONTACTS, SOCIAL } from "@/lib/constants"
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -24,25 +25,28 @@ export function Header() {
       {/* Topbar */}
       <div className="hidden md:block bg-secondary text-white text-xs py-2">
         <div className="container mx-auto px-4 flex items-center justify-between">
-          <div className="flex items-center gap-4 text-white/70">
-            <span>NIF: {COMPANY.nif}</span>
-            <span>|</span>
-            <span>Servindo Angola com excelência desde 1999</span>
+          <div className="flex items-center gap-1.5 text-white/70">
+            <MapPin className="h-3 w-3" />
+            Angola, um futuro com mais indústria
           </div>
           <div className="flex items-center gap-4">
-            <a href={`tel:${CONTACTS.phone2}`} className="flex items-center gap-1 hover:text-primary transition-colors">
+            <a href={`tel:${CONTACTS.phone1.replace(/\s/g, "")}`} className="flex items-center gap-1 hover:text-primary transition-colors">
               <Phone className="h-3 w-3" />
-              {CONTACTS.phone2}
+              {CONTACTS.phone1}
             </a>
             <a href={`mailto:${CONTACTS.email}`} className="flex items-center gap-1 hover:text-primary transition-colors">
               <Mail className="h-3 w-3" />
               {CONTACTS.email}
             </a>
-            <div className="flex items-center gap-2 ml-2">
-              <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors text-white/70">
-                <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-              </a>
-            </div>
+            <a
+              href={SOCIAL.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook SAFRI"
+              className="flex items-center gap-1 ml-2 hover:text-primary transition-colors text-white/70 border-l border-white/20 pl-4"
+            >
+              <ExternalLink className="h-3.5 w-3.5" />
+            </a>
           </div>
         </div>
       </div>
@@ -59,13 +63,17 @@ export function Header() {
         <div className="container mx-auto px-4">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex flex-col leading-none">
-              <span className="text-2xl font-black tracking-tight">
-                <span className="text-primary">S</span>
-                <span className="text-secondary dark:text-white">AFRI</span>
-              </span>
-              <span className="text-[10px] font-medium text-muted-foreground tracking-wider uppercase">
-                Comercial, Lda.
+            <Link href="/" className="flex items-center gap-2 shrink-0">
+              <Image
+                src="/images/logo-wordmark.png"
+                alt="SAFRI Comercial, Lda."
+                width={220}
+                height={79}
+                priority
+                className="h-9 w-auto"
+              />
+              <span className="hidden sm:block text-[10px] font-medium text-muted-foreground tracking-wider uppercase leading-tight border-l border-border pl-2">
+                Comercial,<br />Lda.
               </span>
             </Link>
 
@@ -114,9 +122,15 @@ export function Header() {
             <div className="hidden lg:flex items-center gap-3">
               <Link
                 href="/loja"
-                className="rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white hover:bg-primary/90 transition-all hover:scale-105 shadow-lg shadow-primary/25"
+                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
               >
                 Catálogo
+              </Link>
+              <Link
+                href="/contacto"
+                className="rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white hover:bg-primary/90 transition-all hover:scale-105 shadow-lg shadow-primary/25"
+              >
+                Solicitar Proposta
               </Link>
             </div>
 
@@ -128,12 +142,14 @@ export function Header() {
               <SheetContent side="right" className="w-80 p-0">
                 <div className="flex flex-col h-full">
                   <div className="flex items-center justify-between p-4 border-b">
-                    <Link href="/" onClick={() => setOpen(false)} className="flex flex-col leading-none">
-                      <span className="text-xl font-black">
-                        <span className="text-primary">S</span>
-                        <span className="text-secondary">AFRI</span>
-                      </span>
-                      <span className="text-[10px] text-muted-foreground uppercase tracking-wider">Comercial, Lda.</span>
+                    <Link href="/" onClick={() => setOpen(false)} className="flex items-center">
+                      <Image
+                        src="/images/logo-wordmark.png"
+                        alt="SAFRI Comercial, Lda."
+                        width={200}
+                        height={72}
+                        className="h-8 w-auto"
+                      />
                     </Link>
                     <button onClick={() => setOpen(false)} aria-label="Fechar menu">
                       <X className="h-5 w-5" />

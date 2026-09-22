@@ -34,33 +34,51 @@ export const SOCIAL = {
 export const HERO_SLIDES = [
   {
     id: 1,
-    title: "SOLUÇÕES INDUSTRIAIS DE ALTA PERFORMANCE",
-    subtitle: "Fornecimento, produção e logística para empresas que operam em grande escala",
+    title: "SOLUÇÕES INDUSTRIAIS PARA NEGÓCIOS QUE MOVEM ANGOLA",
+    subtitle: "Fornecimento, produção e logística para empresas que operam em grande escala.",
     highlight: "Mais de 25 anos a executar projetos estratégicos em Angola",
-    image: "/images/loja/sliders/s_0.webp",
+    image: "/images/banners/banner-hero (1).png",
   },
   {
     id: 2,
-    title: "FORNECIMENTO INTELIGENTE PARA GRANDES OPERAÇÕES",
-    subtitle: "Garantimos stock, entrega e continuidade para empresas que não podem parar",
-    highlight: "Capacidade logística e comercial preparada para grandes volumes",
-    image: "/images/loja/sliders/s_1.webp",
+    title: "PRODUÇÃO NACIONAL COM QUALIDADE INDUSTRIAL",
+    subtitle: "Fábricas próprias a produzir sacos de ráfia, cadernos e mobiliário escolar em Angola.",
+    highlight: "Capacidade industrial preparada para grandes volumes",
+    image: "/images/banners/banner-hero (3).png",
   },
   {
     id: 3,
-    title: "LOGÍSTICA E TRANSPORTE EM LARGA ESCALA",
-    subtitle: "Movemos cargas, operações e negócios com eficiência e controlo total",
+    title: "FORNECIMENTO INTELIGENTE PARA GRANDES OPERAÇÕES",
+    subtitle: "Garantimos stock, entrega e continuidade para empresas que não podem parar.",
     highlight: "Infraestrutura própria e frota preparada para grandes desafios",
-    image: "/images/loja/sliders/s_2.webp",
+    image: "/images/banners/banner-hero (4).png",
+  },
+  {
+    id: 4,
+    title: "MOBILIÁRIO ESCOLAR SAFRI-METAL",
+    subtitle: "Carteiras, mesas e equipamento escolar fabricados no Kuito para todo o país.",
+    highlight: "Produção nacional a servir escolas em toda Angola",
+    image: "/images/banners/banner-hero (5).png",
   },
 ] as const
 
 export const HERO_STATS = [
-  { value: "+25", label: "Anos de Experiência" },
-  { value: "+10k m²", label: "Capacidade de Armazenamento" },
-  { value: "+100", label: "Clientes Atendidos" },
-  { value: "24h", label: "Resposta Comercial" },
+  { value: "+25", label: "Anos de Experiência", icon: "Settings" },
+  { value: "+10.000 m²", label: "Capacidade de Armazenamento", icon: "Building2" },
+  { value: "+100", label: "Clientes Atendidos", icon: "Users" },
+  { value: "24h", label: "Resposta Comercial", icon: "Clock" },
 ] as const
+
+export const ABOUT_STATS = [
+  { value: "6", label: "Lojas", sublabel: "Comercial em todo o país", icon: "Store" },
+  { value: "3", label: "Fábricas", sublabel: "Unidades industriais", icon: "Factory" },
+  { value: "+10.000 m²", label: "Área de armazenagem", sublabel: "", icon: "Building2" },
+  { value: "1.300 ha", label: "Fazenda agrícola", sublabel: "", icon: "Sprout" },
+  { value: "+3.600", label: "Alunos", sublabel: "Instituição de ensino superior", icon: "GraduationCap" },
+] as const
+
+export const DIRECTOR_QUOTE =
+  "Acreditamos no potencial de Angola e trabalhamos para um futuro mais forte e sustentável."
 
 export const SECTORS = [
   {
@@ -78,7 +96,7 @@ export const SECTORS = [
       "Participação em programas governamentais (Comércio Rural Permanente)",
     ],
     icon: "ShoppingBag",
-    image: "/images/loja/categories/01.webp",
+    image: "/images/safri_stoque.webp",
   },
   {
     id: "transportes",
@@ -95,7 +113,7 @@ export const SECTORS = [
       "Autocarros para transporte e turismo",
     ],
     icon: "Truck",
-    image: "/images/loja/categories/02.webp",
+    image: "/images/hero-banner.jpg",
   },
   {
     id: "industria",
@@ -112,7 +130,7 @@ export const SECTORS = [
       "Projeto em curso de fábrica de sacos de ráfia",
     ],
     icon: "Factory",
-    image: "/images/loja/categories/03.webp",
+    image: "/images/galeria11.jpg",
   },
   {
     id: "hotelaria",
@@ -128,7 +146,7 @@ export const SECTORS = [
       "Projeto turístico único na região do Bié",
     ],
     icon: "Hotel",
-    image: "/images/loja/categories/04.webp",
+    image: "/images/safri_cama1.webp",
   },
   {
     id: "importacao",
@@ -145,7 +163,7 @@ export const SECTORS = [
       "Capacidade de entrega em menos de 10 dias",
     ],
     icon: "Globe",
-    image: "/images/loja/categories/05.webp",
+    image: "/images/galeria9.jpg",
   },
   {
     id: "educacao",
@@ -163,7 +181,7 @@ export const SECTORS = [
     ],
     icon: "GraduationCap",
     externalLink: "https://www.ispndunduma.co.ao/",
-    image: "/images/loja/categories/06.webp",
+    image: "/images/DSC09266.jpg",
   },
   {
     id: "agro",
@@ -180,7 +198,7 @@ export const SECTORS = [
       "Integração com ensino superior (agronomia)",
     ],
     icon: "Sprout",
-    image: "/images/loja/featured-products/01.webp",
+    image: "/images/galeria20.jpg",
   },
 ] as const
 
@@ -244,6 +262,15 @@ export const NAV_ITEMS = [
     dropdown: SECTORS.map((s) => ({ label: s.title, href: `/setores#${s.id}` })),
   },
   { label: "Galeria", href: "/galeria" },
-  { label: "Visitantes", href: "/visitantes" },
-  { label: "Contacto", href: "/contacto" },
+  { label: "Projectos", href: "/projetos" },
+  { label: "Contactos", href: "/contacto" },
+] as const
+
+export const PARTNERS = [
+  { name: "Governo de Angola", icon: "Landmark" },
+  { name: "Governo Provincial do Bié", icon: "Building2" },
+  { name: "IPN Ndunduma", icon: "GraduationCap" },
+  { name: "SAFRI-METAL", icon: "Factory" },
+  { name: "Ministério do Comércio", icon: "Landmark" },
+  { name: "Banco Angolano", icon: "Banknote" },
 ] as const

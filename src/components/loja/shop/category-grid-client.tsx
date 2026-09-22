@@ -6,28 +6,13 @@ import { SlidersHorizontal, X, LayoutGrid, List } from "lucide-react"
 import { products, PRODUCT_CATEGORIES, getProductsByCategory } from "@/lib/products"
 import { ProductCard } from "@/components/loja/product/product-card"
 
-const GRID_IMAGES = [
-  "/images/loja/new-arrival/01.webp",
-  "/images/loja/new-arrival/02.webp",
-  "/images/loja/new-arrival/03.webp",
-  "/images/loja/new-arrival/04.webp",
-  "/images/loja/new-arrival/05.webp",
-  "/images/loja/new-arrival/06.webp",
-  "/images/loja/new-arrival/07.webp",
-  "/images/loja/new-arrival/08.webp",
-  "/images/loja/new-arrival/09.webp",
-  "/images/loja/new-arrival/10.webp",
-  "/images/loja/featured-products/01.webp",
-  "/images/loja/featured-products/02.webp",
-  "/images/loja/featured-products/03.webp",
-]
-
 const categoryLabels: Record<string, string> = {
   todos: "Todos os Produtos",
   sacos: "Sacos Normais e Laminados",
   saco: "Sacos 30kg",
   carteiras: "Carteiras Escolares",
   cadernos: "Cadernos Escolares",
+  mobiliario: "Mobiliário e Camas",
 }
 
 interface CategoryGridClientProps {
@@ -199,12 +184,8 @@ export function CategoryGridClient({ category }: CategoryGridClientProps) {
             {/* Product grid */}
             {filtered.length > 0 ? (
               <div className={`grid gap-4 grid-cols-2 ${cols === 3 ? "md:grid-cols-3" : "md:grid-cols-2 lg:grid-cols-4"}`}>
-                {filtered.map((p, i) => (
-                  <ProductCard
-                    key={p.id}
-                    product={p}
-                    imageSrc={GRID_IMAGES[i % GRID_IMAGES.length]}
-                  />
+                {filtered.map((p) => (
+                  <ProductCard key={p.id} product={p} />
                 ))}
               </div>
             ) : (

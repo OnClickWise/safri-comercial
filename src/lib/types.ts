@@ -36,7 +36,7 @@ export interface Visit {
   photoCount: number
 }
 
-export type ProductCategory = "sacos" | "saco" | "carteiras" | "cadernos"
+export type ProductCategory = "sacos" | "saco" | "carteiras" | "cadernos" | "mobiliario"
 
 export interface ProductVariant {
   name: string

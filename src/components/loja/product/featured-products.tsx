@@ -6,17 +6,6 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import { products } from "@/lib/products"
 import { ProductCard } from "./product-card"
 
-const featuredImages = [
-  "/images/loja/featured-products/01.webp",
-  "/images/loja/featured-products/02.webp",
-  "/images/loja/featured-products/03.webp",
-  "/images/loja/featured-products/04.webp",
-  "/images/loja/featured-products/05.webp",
-  "/images/loja/featured-products/06.webp",
-  "/images/loja/featured-products/07.webp",
-  "/images/loja/featured-products/08.webp",
-]
-
 const badges = ["Destaque", "Novo", "Destaque", "Novo", undefined, "Destaque", undefined, "Novo"]
 
 export function FeaturedProducts() {
@@ -67,7 +56,6 @@ export function FeaturedProducts() {
                 <ProductCard
                   product={product}
                   badge={badges[i]}
-                  imageSrc={featuredImages[i]}
                 />
               </div>
             ))}

@@ -1,35 +1,36 @@
 import Link from "next/link"
 import Image from "next/image"
-import { CheckCircle2 } from "lucide-react"
+import { CheckCircle2, Quote, Store, Factory, Building2, Sprout, GraduationCap } from "lucide-react"
 import { SectionTag } from "@/components/shared/section-tag"
-import { WhatsAppButton } from "@/components/shared/whatsapp-button"
-import { COMPANY, HERO_STATS } from "@/lib/constants"
+import { COMPANY, ABOUT_STATS, DIRECTOR_QUOTE } from "@/lib/constants"
 
 const highlights = [
-  "Mais de 25 anos no mercado angolano",
-  "Atuação em 7 sectores estratégicos",
-  "Presença em múltiplas províncias",
-  "Infraestrutura e frota próprias",
-  "Parceria com entidades públicas e privadas",
+  "Atuação em múltiplos sectores estratégicos",
+  "Presença em várias províncias",
+  "Infraestrutura e frota própria",
+  "Parcerias com entidades públicas e privadas",
 ]
+
+const statIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  Store, Factory, Building2, Sprout, GraduationCap,
+}
 
 export function AboutSection() {
   return (
     <section className="py-20 md:py-28 bg-background">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.85fr_0.75fr] gap-10 items-start">
           {/* Text */}
           <div>
             <SectionTag className="mb-4">Sobre a SAFRI</SectionTag>
-            <h2 className="text-3xl md:text-4xl font-black text-secondary leading-tight mb-4">
-              25 ANOS DE DESENVOLVIMENTO COMERCIAL E INDUSTRIAL EM ANGOLA
+            <h2 className="text-2xl md:text-3xl font-black text-secondary leading-tight mb-4 uppercase">
+              25 Anos a Contribuir para o Desenvolvimento de Angola
             </h2>
-            <div className="h-1 w-12 rounded-full bg-primary mb-6" />
-            <p className="text-muted-foreground leading-relaxed mb-4">
+            <p className="text-muted-foreground leading-relaxed mb-4 text-sm">
               A SAFRI Comercial, Lda. é uma empresa angolana com sede na Província do Bié, actuando em múltiplos sectores da economia nacional há mais de 25 anos.
             </p>
-            <p className="text-muted-foreground leading-relaxed mb-6">
-              Com filiais em Huambo e Luanda, trabalhamos em mercados diferenciados o que nos permite versatilidade e a capacidade de definir soluções adequadas a cada necessidade produtiva.
+            <p className="text-muted-foreground leading-relaxed mb-6 text-sm">
+              Com filiais em Huambo e Luanda, trabalhamos em mercados diferenciados e oferecemos soluções integradas que respondem às necessidades reais de cada cliente.
             </p>
             <ul className="space-y-2.5 mb-8">
               {highlights.map((h) => (
@@ -39,47 +40,57 @@ export function AboutSection() {
                 </li>
               ))}
             </ul>
-            {/* Stats */}
-            <div className="flex items-center gap-6 mb-8 pb-8 border-b border-border">
-              {HERO_STATS.slice(0, 3).map((stat, i) => (
-                <div key={i} className="text-center">
-                  <div className="text-2xl font-black text-secondary">{stat.value}</div>
-                  <div className="text-xs text-muted-foreground uppercase tracking-wide mt-0.5">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="/empresa"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-secondary px-6 py-2.5 text-sm font-semibold text-secondary hover:bg-secondary hover:text-white transition-all"
-              >
-                Conhecer a Empresa
-              </Link>
-              <WhatsAppButton message="Olá, gostaria de saber mais sobre a SAFRI." />
-            </div>
+            <Link
+              href="/empresa"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white hover:bg-primary/90 transition-all"
+            >
+              Conhecer a Empresa
+            </Link>
           </div>
 
-          {/* Image */}
-          <div className="relative">
-            <div className="relative h-[500px] rounded-2xl overflow-hidden bg-muted shadow-2xl">
+          {/* Photo + quote */}
+          <div className="relative pb-16">
+            <div className="relative h-[420px] rounded-2xl overflow-hidden bg-muted shadow-xl">
               <Image
                 src="/images/director.png"
                 alt="Director SAFRI — Gonçalves Cassoma"
                 fill
                 className="object-cover object-top"
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                sizes="(max-width: 1024px) 100vw, 33vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-secondary/60 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4">
-                <p className="text-white font-bold text-sm">{COMPANY.ceo}</p>
-                <p className="text-white/70 text-xs">Fundador & Director-Geral</p>
-              </div>
             </div>
-            {/* Badge */}
-            <div className="absolute -bottom-6 -left-6 bg-primary text-white rounded-2xl px-6 py-4 shadow-xl">
-              <div className="text-2xl font-black">+25</div>
-              <div className="text-xs text-white/80 uppercase tracking-wide">Anos de<br />Experiência</div>
+            <div className="absolute left-4 right-4 -bottom-0 rounded-2xl bg-card border border-border shadow-xl p-5">
+              <Quote className="h-5 w-5 text-primary/40 mb-2" />
+              <p className="text-sm text-foreground italic leading-relaxed mb-3">
+                &ldquo;{DIRECTOR_QUOTE}&rdquo;
+              </p>
+              <p className="text-sm font-bold text-secondary">{COMPANY.ceo.replace("Sr. ", "")}</p>
+              <p className="text-xs text-muted-foreground">Director Geral</p>
             </div>
+          </div>
+
+          {/* Stats list */}
+          <div className="space-y-3">
+            {ABOUT_STATS.map((stat) => {
+              const Icon = statIcons[stat.icon] ?? Building2
+              return (
+                <div
+                  key={stat.label}
+                  className="flex items-center gap-4 rounded-xl border border-border bg-card p-4"
+                >
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-secondary">
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <div className="text-xl font-black text-primary leading-none">{stat.value}</div>
+                    <div className="text-xs font-semibold text-foreground mt-1">{stat.label}</div>
+                    {stat.sublabel && (
+                      <div className="text-[11px] text-muted-foreground">{stat.sublabel}</div>
+                    )}
+                  </div>
+                </div>
+              )
+            })}
           </div>
         </div>
       </div>

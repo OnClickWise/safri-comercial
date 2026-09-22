@@ -1,57 +1,66 @@
-import Image from "next/image"
+"use client"
+import { useCallback } from "react"
+import useEmblaCarousel from "embla-carousel-react"
+import { ChevronLeft, ChevronRight, Landmark, Building2, GraduationCap, Factory, Banknote } from "lucide-react"
 import { SectionTag } from "@/components/shared/section-tag"
+import { PARTNERS } from "@/lib/constants"
 
-const partners = [
-  { name: "Governo de Angola", abbr: "Gov.AO" },
-  { name: "Governo Provincial do Bié", abbr: "Gov.Bié" },
-  { name: "IPN Ndunduma", abbr: "IPN" },
-  { name: "SAFRI-METAL", abbr: "S-METAL" },
-  { name: "Ministério do Comércio", abbr: "MinCom" },
-  { name: "Banco Angolano", abbr: "Banco" },
-]
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  Landmark, Building2, GraduationCap, Factory, Banknote,
+}
 
 export function PartnersSection() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", dragFree: true })
+  const prev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi])
+  const next = useCallback(() => emblaApi?.scrollNext(), [emblaApi])
+
   return (
     <section className="py-16 bg-muted border-y border-border">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-10">
-          <SectionTag className="mb-2">Parcerias</SectionTag>
-          <p className="text-xs text-muted-foreground uppercase tracking-widest mt-1">
-            Parceiros &amp; Presença Institucional
-          </p>
+        <div className="flex items-center justify-between gap-4 mb-10">
+          <div>
+            <SectionTag className="mb-2">Parceiros</SectionTag>
+            <h2 className="text-2xl md:text-3xl font-black text-secondary mt-1">
+              PARCERIAS QUE CONSTROEM ANGOLA
+            </h2>
+            <p className="mt-2 max-w-xl text-muted-foreground text-sm">
+              Trabalhamos lado a lado com instituições e empresas que partilham a nossa visão de um Angola mais forte.
+            </p>
+          </div>
+          <div className="hidden sm:flex gap-2 shrink-0">
+            <button
+              onClick={prev}
+              aria-label="Anterior"
+              className="h-9 w-9 rounded-full border border-border bg-card flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <button
+              onClick={next}
+              aria-label="Próximo"
+              className="h-9 w-9 rounded-full border border-border bg-card flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          {/* Partners image */}
-          <div className="relative h-56 md:h-72 rounded-2xl overflow-hidden shadow-lg">
-            <Image
-              src="/images/partners.png"
-              alt="Parceiros SAFRI"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-secondary/60 to-transparent" />
-            <div className="absolute inset-0 flex items-center px-8">
-              <div>
-                <p className="text-white/70 text-xs uppercase tracking-widest mb-1">Juntos a crescer</p>
-                <h3 className="text-white text-xl font-black leading-tight">
-                  Parcerias que constroem Angola
-                </h3>
-              </div>
-            </div>
-          </div>
-
-          {/* Partner badges */}
-          <div className="flex flex-wrap gap-3">
-            {partners.map((p) => (
-              <div
-                key={p.name}
-                className="flex h-14 items-center justify-center rounded-xl border border-border bg-card px-5 text-sm font-semibold text-muted-foreground hover:border-primary hover:text-primary transition-all"
-              >
-                {p.name}
-              </div>
-            ))}
+        <div className="overflow-hidden" ref={emblaRef}>
+          <div className="flex gap-4">
+            {PARTNERS.map((p) => {
+              const Icon = iconMap[p.icon] ?? Landmark
+              return (
+                <div
+                  key={p.name}
+                  className="min-w-0 shrink-0 flex items-center gap-3 rounded-xl border border-border bg-card px-6 py-4 hover:border-primary transition-all"
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-secondary/5 text-secondary">
+                    <Icon className="h-4 w-4" />
+                  </span>
+                  <span className="text-sm font-semibold text-foreground whitespace-nowrap">{p.name}</span>
+                </div>
+              )
+            })}
           </div>
         </div>
       </div>
