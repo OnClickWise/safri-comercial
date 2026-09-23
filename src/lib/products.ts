@@ -155,26 +155,138 @@ export const products: Product[] = [
     ],
   },
   {
-    id: "mesa-escolar",
-    name: "Mesa Escolar",
-    slug: "mesa-escolar",
+    id: "cadeira-infantil-amaderada",
+    name: "Cadeira Infantil Amadeirada",
+    slug: "cadeira-infantil-amaderada",
     category: "carteiras",
     images: [
-      "/images/Produtos/mesa-amaderada-uni.png",
-      "/images/Produtos/mesa-amarela - uni.png",
-      "/images/Produtos/mesa-azul - uni.png",
-      "/images/Produtos/cadeiras-mesa-verde.png",
-      "/images/Produtos/cadeira-amaderada.png",
-      "/images/Produtos/cadeira-amarela.png",
-      "/images/Produtos/cadeira-azul.png",
-      "/images/Produtos/cadeira-verde.png",
-      "/images/Produtos/mesa-amaderada.png",
+      "/images/Produtos/cadeira-amaderada-infantil.png",
+      "/images/Produtos/mesa-amaderada-infantil.png",
     ],
     description:
-      "Mesas escolares resistentes para salas de aula e centros de formação. Estrutura robusta em madeira e metal para suportar uso intensivo.",
+      "Cadeira infantil em escala reduzida, acabamento amadeirado, pensada para infantários e salas de pré-escola. Estrutura resistente e segura para crianças.",
     specs: [
-      { label: "Material", value: "Madeira + Metal" },
-      { label: "Uso", value: "Sala de aula e formação" },
+      { label: "Faixa Etária", value: "Pré-escolar" },
+      { label: "Cor", value: "Amadeirada" },
+      { label: "Produção", value: "SAFRI-METAL, Kuito" },
+    ],
+  },
+  {
+    id: "cadeira-infantil-amarela",
+    name: "Cadeira Infantil Amarela",
+    slug: "cadeira-infantil-amarela",
+    category: "carteiras",
+    images: [
+      "/images/Produtos/cadeira-amarela-infantil.png",
+      "/images/Produtos/mesa-amarela-infantil-infantil.png",
+    ],
+    description:
+      "Cadeira infantil em escala reduzida, na cor amarela, pensada para infantários e salas de pré-escola. Estrutura resistente e segura para crianças.",
+    specs: [
+      { label: "Faixa Etária", value: "Pré-escolar" },
+      { label: "Cor", value: "Amarela" },
+      { label: "Produção", value: "SAFRI-METAL, Kuito" },
+    ],
+  },
+  {
+    id: "cadeira-infantil-azul",
+    name: "Cadeira Infantil Azul",
+    slug: "cadeira-infantil-azul",
+    category: "carteiras",
+    images: [
+      "/images/Produtos/cadeira-azul-infantil.png",
+      "/images/Produtos/mesa-azul-infantil.png",
+    ],
+    description:
+      "Cadeira infantil em escala reduzida, na cor azul, pensada para infantários e salas de pré-escola. Estrutura resistente e segura para crianças.",
+    specs: [
+      { label: "Faixa Etária", value: "Pré-escolar" },
+      { label: "Cor", value: "Azul" },
+      { label: "Produção", value: "SAFRI-METAL, Kuito" },
+    ],
+  },
+  {
+    id: "cadeira-infantil-verde",
+    name: "Cadeira Infantil Verde",
+    slug: "cadeira-infantil-verde",
+    category: "carteiras",
+    images: [
+      "/images/Produtos/cadeira-verde-infantil.png",
+      "/images/Produtos/mesa-verde-infantil.png",
+    ],
+    description:
+      "Cadeira infantil em escala reduzida, na cor verde, pensada para infantários e salas de pré-escola. Estrutura resistente e segura para crianças.",
+    specs: [
+      { label: "Faixa Etária", value: "Pré-escolar" },
+      { label: "Cor", value: "Verde" },
+      { label: "Produção", value: "SAFRI-METAL, Kuito" },
+    ],
+  },
+  {
+    id: "mesa-infantil-amaderada",
+    name: "Mesa Infantil Amadeirada",
+    slug: "mesa-infantil-amaderada",
+    category: "carteiras",
+    images: [
+      "/images/Produtos/mesa-amaderada-uni-infantil.png",
+      "/images/Produtos/mesa-amaderada-infantil.png",
+    ],
+    description:
+      "Mesa redonda infantil em escala reduzida, acabamento amadeirado, pensada para infantários e salas de pré-escola.",
+    specs: [
+      { label: "Faixa Etária", value: "Pré-escolar" },
+      { label: "Cor", value: "Amadeirada" },
+      { label: "Produção", value: "SAFRI-METAL, Kuito" },
+    ],
+  },
+  {
+    id: "mesa-infantil-amarela",
+    name: "Mesa Infantil Amarela",
+    slug: "mesa-infantil-amarela",
+    category: "carteiras",
+    images: [
+      "/images/Produtos/mesa-amarela - uni-infantil.png",
+      "/images/Produtos/mesa-amarela-infantil-infantil.png",
+    ],
+    description:
+      "Mesa redonda infantil em escala reduzida, na cor amarela, pensada para infantários e salas de pré-escola.",
+    specs: [
+      { label: "Faixa Etária", value: "Pré-escolar" },
+      { label: "Cor", value: "Amarela" },
+      { label: "Produção", value: "SAFRI-METAL, Kuito" },
+    ],
+  },
+  {
+    id: "mesa-infantil-azul",
+    name: "Mesa Infantil Azul",
+    slug: "mesa-infantil-azul",
+    category: "carteiras",
+    images: [
+      "/images/Produtos/mesa-azul - uni-infantil.png",
+      "/images/Produtos/mesa-azul-infantil.png",
+    ],
+    description:
+      "Mesa redonda infantil em escala reduzida, na cor azul, pensada para infantários e salas de pré-escola.",
+    specs: [
+      { label: "Faixa Etária", value: "Pré-escolar" },
+      { label: "Cor", value: "Azul" },
+      { label: "Produção", value: "SAFRI-METAL, Kuito" },
+    ],
+  },
+  {
+    id: "mesa-infantil-verde",
+    name: "Mesa Infantil Verde",
+    slug: "mesa-infantil-verde",
+    category: "carteiras",
+    images: [
+      "/images/Produtos/cadeiras-mesa-verde-infantil.png",
+      "/images/Produtos/mesa-verde-infantil.png",
+    ],
+    description:
+      "Mesa redonda infantil em escala reduzida, na cor verde, pensada para infantários e salas de pré-escola.",
+    specs: [
+      { label: "Faixa Etária", value: "Pré-escolar" },
+      { label: "Cor", value: "Verde" },
       { label: "Produção", value: "SAFRI-METAL, Kuito" },
     ],
   },
