@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import Image from "next/image"
 import { CheckCircle2, ExternalLink } from "lucide-react"
 import {
   ShoppingBag, Truck, Factory, Hotel, Globe, GraduationCap, Sprout,
@@ -48,9 +49,9 @@ export default function SetoresPage() {
             className={cn("py-20", i % 2 === 0 ? "bg-background" : "bg-muted")}
           >
             <div className="container mx-auto px-4">
-              <div className={cn("grid grid-cols-1 lg:grid-cols-2 gap-12 items-center", reversed && "lg:flex lg:flex-row-reverse")}>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 {/* Text */}
-                <div>
+                <div className={cn(reversed && "lg:order-2")}>
                   <div className="flex items-center gap-3 mb-4">
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
                       <Icon className="h-5 w-5" />
@@ -82,12 +83,16 @@ export default function SetoresPage() {
                   )}
                 </div>
 
-                {/* Image placeholder */}
-                <div className="relative h-72 md:h-80 rounded-2xl overflow-hidden bg-secondary/10 flex items-center justify-center">
-                  <div className="text-center">
-                    <Icon className="h-12 w-12 text-secondary/20 mx-auto mb-2" />
-                    <div className="text-secondary/30 text-sm font-semibold">{sector.title}</div>
-                  </div>
+                {/* Image */}
+                <div className={cn("relative h-72 md:h-80 rounded-2xl overflow-hidden shadow-lg", reversed && "lg:order-1")}>
+                  <Image
+                    src={sector.image}
+                    alt={sector.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-secondary/20" />
                 </div>
               </div>
             </div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import { Target, Eye, Star, CheckCircle2 } from "lucide-react"
 import { PageHero } from "@/components/shared/page-hero"
 import { SectionTag } from "@/components/shared/section-tag"
@@ -36,11 +37,14 @@ export default function EmpresaPage() {
               </p>
               <WhatsAppButton message="Olá, gostaria de saber mais sobre a SAFRI Comercial." />
             </div>
-            <div className="relative h-80 rounded-2xl bg-muted flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-6xl font-black text-secondary/20">SAFRI</div>
-                <div className="text-secondary/30 text-sm mt-2">Empresa — Kuito, Bié</div>
-              </div>
+            <div className="relative h-80 rounded-2xl overflow-hidden shadow-lg">
+              <Image
+                src="/images/safri-intraestrutura.jpg"
+                alt="Instalações da SAFRI-METAL, Kuito"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
           </div>
         </div>
@@ -98,14 +102,14 @@ export default function EmpresaPage() {
             <div className="mx-auto mt-3 h-1 w-12 rounded-full bg-primary" />
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-4xl mx-auto">
-            <div className="relative h-80 rounded-2xl overflow-hidden bg-muted flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-4xl font-black text-secondary/20">CEO</div>
-                <div className="text-secondary/30 text-sm mt-2">Gonçalves Cassoma</div>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 bg-secondary/80 px-4 py-3 text-center">
-                <div className="text-white text-xs font-bold uppercase tracking-wide">CEO — SAFRI COMERCIAL, LDA.</div>
-              </div>
+            <div className="relative h-80 rounded-2xl overflow-hidden">
+              <Image
+                src="/images/ceo.png"
+                alt="Director Geral SAFRI — Gonçalves Cassoma"
+                fill
+                className="object-contain"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
             <div>
               <h3 className="text-2xl font-black text-secondary mb-1">{COMPANY.ceo}</h3>
@@ -132,18 +136,34 @@ export default function EmpresaPage() {
             <h2 className="text-3xl font-black text-white uppercase mt-2">INFRAESTRUTURA</h2>
             <div className="mx-auto mt-3 h-1 w-12 rounded-full bg-primary" />
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { value: "6", label: "Estabelecimentos Comerciais" },
-              { value: "+10k m²", label: "Capacidade de Armazenamento" },
-              { value: "3", label: "Unidades Industriais" },
-              { value: "1.300 ha", label: "Fazenda Agrícola" },
-            ].map((item) => (
-              <div key={item.label} className="text-center rounded-2xl bg-white/5 border border-white/10 p-6">
-                <div className="text-3xl font-black text-primary mb-2">{item.value}</div>
-                <div className="text-xs text-white/60 uppercase tracking-wide">{item.label}</div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="relative h-72 md:h-96 rounded-2xl overflow-hidden shadow-xl">
+              <Image
+                src="/images/safri-metal.png"
+                alt="Unidade industrial SAFRI-METAL, Kuito"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4">
+                <p className="text-white font-bold text-sm">SAFRI-METAL</p>
+                <p className="text-white/70 text-xs">Unidade Industrial — Kuito, Bié</p>
               </div>
-            ))}
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { value: "1", label: "Armazém Vasto" },
+                { value: "+10k m²", label: "Capacidade de Armazenamento" },
+                { value: "1", label: "Fábrica" },
+                { value: "1.300 ha", label: "Fazenda Agrícola" },
+              ].map((item) => (
+                <div key={item.label} className="text-center rounded-2xl bg-white/5 border border-white/10 p-6">
+                  <div className="text-3xl font-black text-primary mb-2">{item.value}</div>
+                  <div className="text-xs text-white/60 uppercase tracking-wide">{item.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

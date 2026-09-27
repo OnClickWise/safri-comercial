@@ -34,30 +34,37 @@ export const SOCIAL = {
 export const HERO_SLIDES = [
   {
     id: 1,
+    eyebrow: "Indústria SAFRI-METAL",
     title: "SOLUÇÕES INDUSTRIAIS PARA NEGÓCIOS QUE MOVEM ANGOLA",
     subtitle: "Fornecimento, produção e logística para empresas que operam em grande escala.",
-    highlight: "Mais de 25 anos a executar projetos estratégicos em Angola",
     image: "/images/banners/banner-hero (1).png",
   },
   {
     id: 2,
-    title: "PRODUÇÃO NACIONAL COM QUALIDADE INDUSTRIAL",
-    subtitle: "Fábricas próprias a produzir sacos de ráfia, cadernos e mobiliário escolar em Angola.",
-    highlight: "Capacidade industrial preparada para grandes volumes",
-    image: "/images/banners/banner-hero (3).png",
+    eyebrow: "Controlo de Qualidade",
+    title: "EQUIPAS ESPECIALIZADAS EM CADA ETAPA DA PRODUÇÃO",
+    subtitle: "Trabalho técnico e supervisão rigorosa garantem consistência em cada lote fabricado.",
+    image: "/images/banners/banner-hero (2).png",
   },
   {
     id: 3,
-    title: "FORNECIMENTO INTELIGENTE PARA GRANDES OPERAÇÕES",
-    subtitle: "Garantimos stock, entrega e continuidade para empresas que não podem parar.",
-    highlight: "Infraestrutura própria e frota preparada para grandes desafios",
-    image: "/images/banners/banner-hero (4).png",
+    eyebrow: "Produção Nacional",
+    title: "PRODUÇÃO NACIONAL COM QUALIDADE INDUSTRIAL",
+    subtitle: "Fábricas próprias a produzir sacos de ráfia, cadernos e mobiliário escolar em Angola.",
+    image: "/images/banners/banner-hero (3).png",
   },
   {
     id: 4,
-    title: "MOBILIÁRIO ESCOLAR SAFRI-METAL",
+    eyebrow: "Fornecimento B2B",
+    title: "FORNECIMENTO INTELIGENTE PARA GRANDES OPERAÇÕES",
+    subtitle: "Garantimos stock, entrega e continuidade para empresas que não podem parar.",
+    image: "/images/banners/banner-hero (4).png",
+  },
+  {
+    id: 5,
+    eyebrow: "SAFRI-METAL, Kuito",
+    title: "MOBILIÁRIO ESCOLAR PRODUZIDO EM ANGOLA",
     subtitle: "Carteiras, mesas e equipamento escolar fabricados no Kuito para todo o país.",
-    highlight: "Produção nacional a servir escolas em toda Angola",
     image: "/images/banners/banner-hero (5).png",
   },
 ] as const
@@ -70,8 +77,8 @@ export const HERO_STATS = [
 ] as const
 
 export const ABOUT_STATS = [
-  { value: "6", label: "Lojas", sublabel: "Comercial em todo o país", icon: "Store" },
-  { value: "3", label: "Fábricas", sublabel: "Unidades industriais", icon: "Factory" },
+  { value: "1", label: "Armazém Vasto", sublabel: "Estrutura comercial e logística", icon: "Store" },
+  { value: "1", label: "Fábrica", sublabel: "Unidade industrial", icon: "Factory" },
   { value: "+10.000 m²", label: "Área de armazenagem", sublabel: "", icon: "Building2" },
   { value: "1.300 ha", label: "Fazenda agrícola", sublabel: "", icon: "Sprout" },
   { value: "+3.600", label: "Alunos", sublabel: "Instituição de ensino superior", icon: "GraduationCap" },
@@ -89,14 +96,14 @@ export const SECTORS = [
     description:
       "Base histórica da SAFRI, com forte presença nas províncias do Bié e Huambo, garantindo abastecimento contínuo e resposta eficiente ao mercado.",
     highlights: [
-      "Rede com 6 estabelecimentos comerciais e armazéns",
+      "1 armazém vasto para distribuição comercial",
       "Presença no Kuito, Andulo, Chinguar, Camacupa e Huambo",
       "Venda de bens alimentares, industriais e mobiliário",
       "Capacidade de armazenamento superior a 10.000m²",
       "Participação em programas governamentais (Comércio Rural Permanente)",
     ],
     icon: "ShoppingBag",
-    image: "/images/safri_stoque.webp",
+    image: "/images/services/comercio.jpg",
   },
   {
     id: "transportes",
@@ -113,7 +120,7 @@ export const SECTORS = [
       "Autocarros para transporte e turismo",
     ],
     icon: "Truck",
-    image: "/images/hero-banner.jpg",
+    image: "/images/services/logistica.jpg",
   },
   {
     id: "industria",
@@ -130,7 +137,7 @@ export const SECTORS = [
       "Projeto em curso de fábrica de sacos de ráfia",
     ],
     icon: "Factory",
-    image: "/images/galeria11.jpg",
+    image: "/images/services/industria.jpg",
   },
   {
     id: "hotelaria",
@@ -146,7 +153,7 @@ export const SECTORS = [
       "Projeto turístico único na região do Bié",
     ],
     icon: "Hotel",
-    image: "/images/safri_cama1.webp",
+    image: "/images/services/turismo.jpg",
   },
   {
     id: "importacao",
@@ -163,7 +170,7 @@ export const SECTORS = [
       "Capacidade de entrega em menos de 10 dias",
     ],
     icon: "Globe",
-    image: "/images/galeria9.jpg",
+    image: "/images/services/importacao.jpg",
   },
   {
     id: "educacao",
@@ -181,7 +188,7 @@ export const SECTORS = [
     ],
     icon: "GraduationCap",
     externalLink: "https://www.ispndunduma.co.ao/",
-    image: "/images/DSC09266.jpg",
+    image: "/images/services/educacao2.jpeg",
   },
   {
     id: "agro",
@@ -198,7 +205,7 @@ export const SECTORS = [
       "Integração com ensino superior (agronomia)",
     ],
     icon: "Sprout",
-    image: "/images/galeria20.jpg",
+    image: "/images/services/agro1.jpg",
   },
 ] as const
 
@@ -267,10 +274,7 @@ export const NAV_ITEMS = [
 ] as const
 
 export const PARTNERS = [
-  { name: "Governo de Angola", icon: "Landmark" },
-  { name: "Governo Provincial do Bié", icon: "Building2" },
-  { name: "IPN Ndunduma", icon: "GraduationCap" },
-  { name: "SAFRI-METAL", icon: "Factory" },
-  { name: "Ministério do Comércio", icon: "Landmark" },
-  { name: "Banco Angolano", icon: "Banknote" },
+  { name: "Ministério da Agricultura e Florestas", logo: "/images/partners/Logo_Governo_agricultura.png" },
+  { name: "Ministério da Educação", logo: "/images/partners/min-educação.png" },
+  { name: "Parceiro SAFRI", logo: "/images/partners/patceiro-1.png" },
 ] as const

@@ -63,18 +63,15 @@ export function Header() {
         <div className="container mx-auto px-4">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 shrink-0">
+            <Link href="/" className="flex items-center shrink-0">
               <Image
-                src="/images/logo-wordmark.png"
+                src="/images/logo.png"
                 alt="SAFRI Comercial, Lda."
                 width={220}
-                height={79}
+                height={106}
                 priority
-                className="h-9 w-auto"
+                className="h-11 w-auto"
               />
-              <span className="hidden sm:block text-[10px] font-medium text-muted-foreground tracking-wider uppercase leading-tight border-l border-border pl-2">
-                Comercial,<br />Lda.
-              </span>
             </Link>
 
             {/* Desktop Nav */}
@@ -144,11 +141,11 @@ export function Header() {
                   <div className="flex items-center justify-between p-4 border-b">
                     <Link href="/" onClick={() => setOpen(false)} className="flex items-center">
                       <Image
-                        src="/images/logo-wordmark.png"
+                        src="/images/logo.png"
                         alt="SAFRI Comercial, Lda."
                         width={200}
-                        height={72}
-                        className="h-8 w-auto"
+                        height={97}
+                        className="h-10 w-auto"
                       />
                     </Link>
                     <button onClick={() => setOpen(false)} aria-label="Fechar menu">

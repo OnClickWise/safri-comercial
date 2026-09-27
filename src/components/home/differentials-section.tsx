@@ -38,11 +38,11 @@ export function DifferentialsSection() {
             })}
           </div>
 
-          {/* Logistics visual */}
+          {/* Infrastructure visual */}
           <div className="relative rounded-2xl overflow-hidden min-h-[320px] shadow-xl">
             <Image
-              src="/images/galeria4.jpg"
-              alt="Logística SAFRI"
+              src="/images/safri-metal.png"
+              alt="Unidade industrial SAFRI-METAL, Kuito"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 45vw"
@@ -50,7 +50,7 @@ export function DifferentialsSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/30 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6">
               <h3 className="text-2xl font-black text-white leading-tight">
-                Logística que mantém<br />o país em movimento.
+                Infraestrutura própria que<br />sustenta o crescimento.
               </h3>
             </div>
           </div>

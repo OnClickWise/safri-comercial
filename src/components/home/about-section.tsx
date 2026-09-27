@@ -1,8 +1,8 @@
 import Link from "next/link"
 import Image from "next/image"
-import { CheckCircle2, Quote, Store, Factory, Building2, Sprout, GraduationCap } from "lucide-react"
+import { CheckCircle2, Store, Factory, Building2, Sprout, GraduationCap } from "lucide-react"
 import { SectionTag } from "@/components/shared/section-tag"
-import { COMPANY, ABOUT_STATS, DIRECTOR_QUOTE } from "@/lib/constants"
+import { ABOUT_STATS } from "@/lib/constants"
 
 const highlights = [
   "Atuação em múltiplos sectores estratégicos",
@@ -48,25 +48,15 @@ export function AboutSection() {
             </Link>
           </div>
 
-          {/* Photo + quote */}
-          <div className="relative pb-16">
-            <div className="relative h-[420px] rounded-2xl overflow-hidden bg-muted shadow-xl">
-              <Image
-                src="/images/director.png"
-                alt="Director SAFRI — Gonçalves Cassoma"
-                fill
-                className="object-cover object-top"
-                sizes="(max-width: 1024px) 100vw, 33vw"
-              />
-            </div>
-            <div className="absolute left-4 right-4 -bottom-0 rounded-2xl bg-card border border-border shadow-xl p-5">
-              <Quote className="h-5 w-5 text-primary/40 mb-2" />
-              <p className="text-sm text-foreground italic leading-relaxed mb-3">
-                &ldquo;{DIRECTOR_QUOTE}&rdquo;
-              </p>
-              <p className="text-sm font-bold text-secondary">{COMPANY.ceo.replace("Sr. ", "")}</p>
-              <p className="text-xs text-muted-foreground">Director Geral</p>
-            </div>
+          {/* Photo */}
+          <div className="relative h-[420px] rounded-2xl overflow-hidden shadow-xl">
+            <Image
+              src="/images/ceo.png"
+              alt="Director Geral SAFRI — Gonçalves Cassoma"
+              fill
+              className="object-contain"
+              sizes="(max-width: 1024px) 100vw, 33vw"
+            />
           </div>
 
           {/* Stats list */}
