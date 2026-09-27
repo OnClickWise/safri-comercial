@@ -75,7 +75,7 @@ export function HeroCarousel() {
                     <span className="block h-px w-6 bg-primary" />
                     {slide.eyebrow}
                   </span>
-                  <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white uppercase leading-[1.08] mb-5 text-balance">
+                  <h1 className="text-[30px] md:text-[33px] lg:text-[35px] font-black text-white uppercase leading-[1.15] mb-5 text-balance">
                     {slide.title}
                   </h1>
                   <p className="text-base md:text-lg text-white/80 mb-8 leading-relaxed max-w-lg">
